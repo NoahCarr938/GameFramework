@@ -1,6 +1,9 @@
 #pragma once
-#include "raylib.h"
 #include "Actor.h"
+#include "Transform2D.h"
+#include "Collider.h"
+#include "Component.h"
+#include "raylib.h"
 
 class Player : public Actor
 {

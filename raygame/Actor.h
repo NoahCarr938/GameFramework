@@ -19,9 +19,10 @@ public:
     /// <param name="x">Position on the x axis</param>
     /// <param name="y">Position on the y axis</param>
     /// <param name="name">The name of this actor.</param>
-    Actor(float x, float y, const char* name);
+    Actor(float x, float y, float speed, const char* name);
 
-    float speed = 10;
+    float speed = 200;
+    float rotationSpeed = 5;
 
     /// <summary>
     /// </summary>
@@ -106,12 +107,13 @@ public:
     virtual void onCollision(Actor* other);
 
     Transform2D* m_transform;
+    bool m_started;
 
 protected:
     const char* m_name;
 
 private:
-    bool m_started;
+   // bool m_started;
     //Transform2D* m_transform;
     Collider* m_collider;
     //Component** m_components;

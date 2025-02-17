@@ -16,116 +16,13 @@ Actor::~Actor()
 }
 
 
-Actor::Actor(float x, float y, const char* name = "Actor")
+Actor::Actor(float x, float y, float speed, const char* name = "Actor")
 {
     //Initialze default values
     m_transform = new Transform2D(this);
     m_transform->setLocalPosition({ x,y });
     m_name = name;
 }
-
-//Component* Actor::getComponent(const char* componentName)
-//{
-//    //Iterate through all of the components in the array.
-//    for (int i = 0; i < m_componentCount; i++)
-//    {
-//        //If the component name matches the name given...
-//        if (m_components[i]->getName() == componentName)
-//        {
-//            //...return the component.
-//            return m_components[i];
-//        }
-//    }
-//
-//    //Return null by default.
-//    return nullptr;
-//}
-
-//Component* Actor::addComponent(Component* component)
-//{
-//    //If this actor doesn't own this component...
-//    Actor* owner = component->getOwner();
-//    if (owner && owner != this)
-//    {
-//        //...return nullptr to prevent it from being added.
-//        return nullptr;
-//    }
-//
-//    //Create a new array that has a size that is greater than the original by one.
-//    Component** tempArray = new Component * [m_componentCount + 1];
-//
-//    //Copy all values from the old array to the temp array.
-//    for (int i = 0; i < m_componentCount; i++)
-//    {
-//        tempArray[i] = m_components[i];
-//    }
-//
-//    //Delete the old array.
-//    delete m_components;
-//
-//    //Set the last index in the temp array to be the component we want to add.
-//    tempArray[m_componentCount] = component;
-//
-//    //Set the original array to be the temp array.
-//    m_components = tempArray;
-//    //Increment the component count.
-//    m_componentCount++;
-//
-//    //Return the new component that was added.
-//    return component;
-//}
-
-//bool Actor::removeComponent(const char* componentName)
-//{
-//    //If the component name is null..
-//    if (!componentName)
-//    {
-//        //...return false.
-//        return false;
-//    }
-//
-//    //Create a new variable to store whether or not the component was removed.
-//    bool componentRemoved = false;
-//
-//    //Create a new temporary array to copy the values over to.
-//    Component** tempArray = new Component * [m_componentCount - 1];
-//
-//    //Copy all values except for the one to remove.
-//    int j = 0;
-//    for (int i = 0; i < m_componentCount; i++)
-//    {
-//        //If this component doesn't match the name given...
-//        if (componentName != m_components[i]->getName())
-//        {
-//            //...copy the value from the original to the temp array.
-//            tempArray[j] = m_components[i];
-//            j++;
-//        }
-//        //Otherwise...
-//        else
-//        {
-//            //...mark that the component was removed.
-//            componentRemoved = true;
-//        }
-//    }
-//
-//    //If the component was removed...
-//    if (componentRemoved)
-//    {
-//        //...delete the old array and set it to the new array.
-//        delete m_components;
-//        m_components = tempArray;
-//        m_componentCount--;
-//    }
-//    //Otherwise...
-//    else
-//    {
-//        //...delete the new array.
-//        delete[] tempArray;
-//    }
-//
-//    return componentRemoved;
-//}
 
 void Actor::start()
 {
@@ -156,7 +53,13 @@ void Actor::update(float deltaTime)
         m_components[i]->update(deltaTime);
     }
 
-    // Player Movement
+    //Player Rotation
+    if (IsKeyDown(KEY_RIGHT))
+        m_transform->rotate(rotationSpeed * -1 * (float)deltaTime);
+    if (IsKeyDown(KEY_LEFT))
+        m_transform->rotate(rotationSpeed * 1 * (float)deltaTime);
+
+     //Player Movement
     MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
     if (IsKeyDown(KEY_W) && m_transform->getLocalPosition().y > 5)
         movementInput.y -= 10;

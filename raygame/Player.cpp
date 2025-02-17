@@ -1,7 +1,6 @@
 #include "Player.h"
+#include "Actor.h"
 #include "Transform2D.h"
-#include "CircleCollider.h"
-#include "Collider.h"
 #include "AABBCollider.h"
 #include "raylib.h"
 
@@ -25,11 +24,13 @@ Player::Player(float x, float y, const char* name)
 
 void Player::Start()
 {
-	Actor::start();
+	m_started = true;
 
-	if (m_transform->getLocalPosition().y != (GetScreenHeight() * .9))
+	m_transform->updateTransforms();
+
+	for (int i = 0; i < m_components.Length(); i++)
 	{
-		m_transform->setLocalPosition(MathLibrary::Vector2((GetScreenWidth() * .45), (GetScreenHeight() * .9)));
+		m_components[i]->start();
 	}
 }
 
@@ -37,28 +38,37 @@ void Player::Update(float deltaTime)
 {
 	Actor::update(deltaTime);
 
+	m_transform->updateTransforms();
 
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		m_components[i]->update(deltaTime);
+	}
 
-	//// Player Movement
-	//MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
-	//if (IsKeyDown(KEY_W) && m_transform->getLocalPosition().y > 5)
-	//    movementInput.y += 10;
-	//if (IsKeyDown(KEY_S) && m_transform->getLocalPosition().y < 5)
-	//	movementInput.y -= 10;
-	//if (IsKeyDown(KEY_A) && m_transform->getLocalPosition().x > 5)
-	//	movementInput.x -= 10;
-	//if (IsKeyDown(KEY_D) && m_transform->getLocalPosition().x < GetScreenWidth() * .86)
-	//	movementInput.x += 10;
+	// Player Movement
+	MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
+	if (IsKeyDown(KEY_W) && m_transform->getLocalPosition().y > 5)
+	    movementInput.y += 10;
+	if (IsKeyDown(KEY_S) && m_transform->getLocalPosition().y < 5)
+		movementInput.y -= 10;
+	if (IsKeyDown(KEY_A) && m_transform->getLocalPosition().x > 5)
+		movementInput.x -= 10;
+	if (IsKeyDown(KEY_D) && m_transform->getLocalPosition().x < GetScreenWidth() * .86)
+		movementInput.x += 10;
 
-	//MathLibrary::Vector2 deltaMovement = movementInput.getNormalized() * speed * (float)deltaTime;
+	MathLibrary::Vector2 deltaMovement = movementInput.getNormalized() * speed * (float)deltaTime;
 
-	//if (deltaMovement.getMagnitude() != 0)
-	//	m_transform->setLocalPosition(m_transform->getLocalPosition() + deltaMovement);
+	if (deltaMovement.getMagnitude() != 0)
+		m_transform->setLocalPosition(m_transform->getLocalPosition() + deltaMovement);
 
 	DrawText(TextFormat("Points %i", m_score), 320, 40, 40, RED);
 }
 
 void Player::End()
 {
-	Actor::end();
+	m_started = false;
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		m_components[i]->end();
+	}
 }
