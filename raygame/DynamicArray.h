@@ -278,8 +278,11 @@ inline void DynamicArray<T>::Remove(const T& value)
 {
 	for (int i = 0; i < m_length; i++)
 	{
-		Remove(i);
-		return;
+		if (m_array[i] == value)
+		{
+			RemoveIndex(i);
+			return;
+		}
 	}
 }
 

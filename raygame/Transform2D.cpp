@@ -29,6 +29,17 @@ MathLibrary::Vector2 Transform2D::getForward()
     return MathLibrary::Vector2(m_globalMatrix->m00, m_globalMatrix->m10).getNormalized();
 }
 
+void Transform2D::Translate(MathLibrary::Vector2 direction)
+{
+    setLocalPosition(getLocalPosition() + direction);
+}
+
+void Transform2D::Translate(float x, float y)
+{
+    setLocalPosition(getLocalPosition() + MathLibrary::Vector2(x, y));
+}
+
+
 void Transform2D::setForward(MathLibrary::Vector2 value)
 {
     //Get the direction the transform should rotate to face

@@ -18,6 +18,10 @@ public:
    /// <returns>The current orientation of this actors z axis.</returns>
     MathLibrary::Vector2 getForward();
 
+    void Translate(MathLibrary::Vector2 direction);
+
+    void Translate(float x, float y);
+
     /// <summary>
     /// Rotates the object until its forward matches the value given normalized.
     /// </summary>
@@ -133,6 +137,7 @@ private:
     MathLibrary::Matrix3* m_rotation;
     MathLibrary::Matrix3* m_translation;
     MathLibrary::Matrix3* m_scale;
+
     Transform2D** m_children;
     Transform2D* m_parent;
     int m_childCount;
