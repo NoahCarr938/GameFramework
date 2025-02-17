@@ -21,6 +21,8 @@ public:
     /// <param name="name">The name of this actor.</param>
     Actor(float x, float y, const char* name);
 
+    float speed = 10;
+
     /// <summary>
     /// </summary>
     /// <returns>If the actors start function has been called.</returns>
@@ -103,12 +105,14 @@ public:
     /// <param name="other">The actor this actor collided with.</param>
     virtual void onCollision(Actor* other);
 
+    Transform2D* m_transform;
+
 protected:
     const char* m_name;
 
 private:
     bool m_started;
-    Transform2D* m_transform;
+    //Transform2D* m_transform;
     Collider* m_collider;
     //Component** m_components;
     int m_componentCount;

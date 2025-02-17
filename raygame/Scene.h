@@ -1,6 +1,8 @@
 #pragma once
 #include <Matrix3.h>
 #include "Actor.h"
+#include "Player.h"
+#include "Enemy.h"
 #include "ActorArray.h"
 #include "DynamicArray.h"
 

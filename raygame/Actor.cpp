@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
+#include "raylib.h"
 
 Actor::Actor()
 {
@@ -130,6 +131,8 @@ void Actor::start()
 {
     m_started = true;
 
+    m_transform->updateTransforms();
+
     for (int i = 0; i < m_components.Length(); i++)
     {
         m_components[i]->start();
@@ -152,6 +155,22 @@ void Actor::update(float deltaTime)
     {
         m_components[i]->update(deltaTime);
     }
+
+    // Player Movement
+    MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
+    if (IsKeyDown(KEY_W) && m_transform->getLocalPosition().y > 5)
+        movementInput.y -= 10;
+    if (IsKeyDown(KEY_S) && m_transform->getLocalPosition().y > 5)
+        movementInput.y += 10;
+    if (IsKeyDown(KEY_A) && m_transform->getLocalPosition().x > 5)
+        movementInput.x -= 10;
+    if (IsKeyDown(KEY_D) && m_transform->getLocalPosition().x < GetScreenWidth() * .86)
+        movementInput.x += 10;
+
+    MathLibrary::Vector2 deltaMovement = movementInput.getNormalized() * speed * (float)deltaTime;
+
+    if (deltaMovement.getMagnitude() != 0)
+        m_transform->setLocalPosition(m_transform->getLocalPosition() + deltaMovement);
 }
 
 void Actor::draw()
