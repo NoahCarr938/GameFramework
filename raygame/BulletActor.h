@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "Transform2D.h"
 
 
 /// <summary>

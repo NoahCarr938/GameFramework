@@ -24,6 +24,7 @@ void SampleScene::start()
 	enemy->getTransform()->setScale({ 50, 50 });
 
 	addActor(enemy);
+
 }
 
 void SampleScene::update(double deltaTime)

@@ -63,6 +63,8 @@ public:
 	// No deleting except for our own array
 	void Clear();
 
+	void Contains(const T& value);
+
 private:
 	T* m_array;
 	int m_length;
@@ -309,4 +311,13 @@ inline void DynamicArray<T>::Clear()
 {
 	// Clear out all the references in the array, delete the array, reinitialize in an empty array
 	Resize(0);
+}
+
+template<typename T>
+inline void DynamicArray<T>::Contains(const T& value)
+{
+	for (int i = 0; i < length; i++)
+	{
+
+	}
 }

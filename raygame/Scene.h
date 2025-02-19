@@ -3,7 +3,6 @@
 #include "Actor.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "ActorArray.h"
 #include "DynamicArray.h"
 
 class Scene
