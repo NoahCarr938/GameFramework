@@ -1,6 +1,5 @@
 #include "SampleScene.h"
 #include "SpriteComponent.h"
-#include "MovementComponent.h"
 #include "Transform2D.h"
 
 void SampleScene::start()
@@ -14,7 +13,6 @@ void SampleScene::start()
 
 	Actor* player = new Actor(50, 50, 10, "Player");
 	player->addComponent(new SpriteComponent(player, "Images/player.png"));
-	player->addComponent(new MovementComponent(player));
 	player->getTransform()->setScale({ 50, 50 });
 
 	addActor(player);

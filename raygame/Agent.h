@@ -17,7 +17,7 @@ public:
 	void Draw();
 
 private:
-	Actor m_pathAgent;
+	DynamicArray<Actor*> m_pathAgent;
 	Behavior m_currentBehavior;
 	List<Behavior*> m_behaviorList;
 };
