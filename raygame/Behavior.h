@@ -4,5 +4,7 @@ class Agent;
 class Behavior
 {
 public:
-	virtual void Update();
+	/*virtual void Start(Agent *agent);
+	virtual void Update(Agent *agent, float deltaTime);
+	virtual void End(Agent *agent);*/
 };
