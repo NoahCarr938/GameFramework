@@ -14,15 +14,16 @@ void Agent::Start()
 
 void Agent::Update(float deltaTime)
 {
-	/*if (m_currentBehavior)
-		m_currentBehavior.Update(deltaTime);
-	m_pathAgent.update(deltaTime);*/
+	if (m_currentBehavior)
+		m_currentBehavior->Update(this, deltaTime);
+	m_Agent.update(deltaTime);
 }
 
 void Agent::End()
 {
 }
 
-void Agent::Draw()
+void Agent::goTo()
 {
+	
 }

@@ -16,7 +16,7 @@ Actor::~Actor()
 }
 
 
-Actor::Actor(float x, float y, float speed, const char* name = "Actor")
+Actor::Actor(float x, float y, const char* name = "Actor")
 {
     //Initialze default values
     m_transform = new Transform2D(this);

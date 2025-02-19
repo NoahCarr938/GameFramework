@@ -1,6 +1,8 @@
 #pragma once
 #include "DynamicArray.h"
 #include "Component.h"
+#include "Vector2.h"
+
 
 class Transform2D;
 class Collider;
@@ -19,10 +21,17 @@ public:
     /// <param name="x">Position on the x axis</param>
     /// <param name="y">Position on the y axis</param>
     /// <param name="name">The name of this actor.</param>
-    Actor(float x, float y, float speed, const char* name);
+    Actor(float x, float y, const char* name);
 
     float speed = 200;
     float rotationSpeed = 5;
+
+   /* Velocity variables and functions*/
+    // Max velocity will be a scalar
+    MathLibrary::Vector2 maxVelocity;
+    MathLibrary::Vector2 desiredVelocity = ((m_transform->getLocalPosition() - m_transform->getLocalPosition()).getNormalized() * maxVelocity);
+    MathLibrary::Vector2 currentVelocity;
+    MathLibrary::Vector2 steeringForce = desiredVelocity - currentVelocity;
 
     /// <summary>
     /// </summary>

@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include "Behavior.h"
 #include "list.h"
+#include "Component.h"
 
 class Agent : public Actor
 {
@@ -14,10 +15,10 @@ public:
 	void Start();
 	void Update(float deltaTime);
 	void End();
-	void Draw();
+	void goTo();
 
 private:
-	DynamicArray<Actor*> m_pathAgent;
-	Behavior m_currentBehavior;
+	Actor m_Agent;
+	Behavior* m_currentBehavior;
 	List<Behavior*> m_behaviorList;
 };

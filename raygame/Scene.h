@@ -68,6 +68,7 @@ public:
 
     virtual void end();
 
+
 private:
     //ActorArray m_actors;
     DynamicArray<Actor*> m_actors;
