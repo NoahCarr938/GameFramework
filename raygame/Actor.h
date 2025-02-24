@@ -3,7 +3,6 @@
 #include "Component.h"
 #include "Vector2.h"
 
-
 class Transform2D;
 class Collider;
 class Component;
@@ -28,10 +27,12 @@ public:
 
    /* Velocity variables and functions*/
     // Max velocity will be a scalar
-    MathLibrary::Vector2 maxVelocity;
-    MathLibrary::Vector2 desiredVelocity = ((m_transform->getLocalPosition() - m_transform->getLocalPosition()).getNormalized() * maxVelocity);
-    MathLibrary::Vector2 currentVelocity;
-    MathLibrary::Vector2 steeringForce = desiredVelocity - currentVelocity;
+    /*MathLibrary::Vector2 maxVelocity = MathLibrary::Vector2();
+    MathLibrary::Vector2 currentVelocity = MathLibrary::Vector2();
+    MathLibrary::Vector2 desiredVelocity = MathLibrary::Vector2();
+    MathLibrary::Vector2 steeringForce = MathLibrary::Vector2();
+    MathLibrary::Vector2 desiredVelocity = m_transform->getLocalPosition() - m_transform->getLocalPosition().normalized * maxVelocity;
+    MathLibrary::Vector2 steeringForce = desiredVelocity - currentVelocity;*/
 
     /// <summary>
     /// </summary>
@@ -122,6 +123,8 @@ protected:
     const char* m_name;
 
 private:
+    Actor* m_player;
+    Actor* m_target;
    // bool m_started;
     //Transform2D* m_transform;
     Collider* m_collider;

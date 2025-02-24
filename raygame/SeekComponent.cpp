@@ -1,28 +1,21 @@
 #include "SeekComponent.h"
 #include "raylib.h"
-#include "Transform2D.h"
 #include "Actor.h"
 #include "Scene.h"
 
-SeekComponent::SeekComponent(Actor* player, Actor* target)
+SeekComponent::SeekComponent(Actor* owner, Actor* target)
 {
-	//Velocity variables and functions
-	/*MathLibrary::Vector2 maxVelocity;
-	MathLibrary::Vector2 desiredVelocity = (player.getLocalPosition - target.getLocalPosition()).getNormalized() * maxVelocity;
-	MathLibrary::Vector2 currentVelocity;
-	MathLibrary::Vector2 steeringForce = desiredVelocity - currentVelocity;*/
-
+	/*agent->setTarget(MathLibrary::Vector2(640, 360));
+	target = MathLibrary::Vector2(640, 360);*/
 }
 
 SeekComponent::~SeekComponent()
 {
+	//agents.destroy();
 }
 
-void SeekComponent::Update(Agent* agent, float deltaTime)
+void SeekComponent::Update(float deltaTime)
 {
-	if (KeyboardKey(KEY_SPACE))
-	{
-		/*MathLibrary::Vector2 seekPos = actor.GetLocalPosition();
-		agent->goTo(MathLibrary::Vector2(seekPos.x, seekPos.y));*/
-	}
+	//Vector2 steeringForce = m_player->m_currentBehavior()->Seek(m_player, m_player->getTarget(), deltaTime);
+	m_player->update(deltaTime);
 }
