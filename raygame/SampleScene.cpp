@@ -13,7 +13,7 @@ void SampleScene::start()
 
 	/*addActor(test);*/
 
-	/*Actor* enemy = new Actor(150, 50, "Enemy");
+	Agent* enemy = new Agent(150, 50, "Enemy");
 	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
 	enemy->getTransform()->setScale({ 50, 50 });
 
@@ -23,24 +23,11 @@ void SampleScene::start()
 
 	Actor* player = new Actor(50, 50, "Player");
 	player->addComponent(new SpriteComponent(player, "Images/player.png"));
-	player->addComponent(new SeekComponent(player, enemy));
-	player->getTransform()->setScale({ 50, 50 });*/
-
-	Agent* enemy = new Agent(150, 50, "Enemy");
-	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
-	//enemy->addComponent(new SeekComponent(player, enemy));
-	enemy->getTransform()->setScale({ 50, 50 });
-
-	Agent* bullet = new Agent(250, 50, "Bullet");
-	bullet->addComponent(new SpriteComponent(bullet, "Images/bullet.png"));
-	bullet->getTransform()->setScale({ 50, 50 });
-
-	Agent* player = new Agent(50, 50, "Player");
-	player->addComponent(new SpriteComponent(player, "Images/player.png"));
-	player->addComponent(new SeekComponent(player, enemy));
 	player->getTransform()->setScale({ 50, 50 });
 
-	
+	enemy->getTransform()->setMaxVelovity(100);
+	enemy->addComponent(new Behavior(enemy));
+	enemy->addComponent(new SeekComponent(enemy, player));
 
 	addActor(player);
 	addActor(enemy);

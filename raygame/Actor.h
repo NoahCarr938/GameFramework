@@ -11,8 +11,8 @@ class Actor
 {
 public:
 
-    DynamicArray<Component*> m_components;
-    DynamicArray<Component*> m_componentsToBeRemoved;
+    /*DynamicArray<Component*> m_components;
+    DynamicArray<Component*> m_componentsToBeRemoved;*/
 
     Actor();
     ~Actor();
@@ -24,15 +24,6 @@ public:
 
     float speed = 200;
     float rotationSpeed = 5;
-
-   /* Velocity variables and functions*/
-    // Max velocity will be a scalar
-    /*MathLibrary::Vector2 maxVelocity = MathLibrary::Vector2();
-    MathLibrary::Vector2 currentVelocity = MathLibrary::Vector2();
-    MathLibrary::Vector2 desiredVelocity = MathLibrary::Vector2();
-    MathLibrary::Vector2 steeringForce = MathLibrary::Vector2();
-    MathLibrary::Vector2 desiredVelocity = m_transform->getLocalPosition() - m_transform->getLocalPosition().normalized * maxVelocity;
-    MathLibrary::Vector2 steeringForce = desiredVelocity - currentVelocity;*/
 
     /// <summary>
     /// </summary>
@@ -116,20 +107,17 @@ public:
     /// <param name="other">The actor this actor collided with.</param>
     virtual void onCollision(Actor* other);
 
-    Transform2D* m_transform;
-    bool m_started;
+    /*Transform2D* m_transform;
+    bool m_started;*/
 
 protected:
     const char* m_name;
-
-private:
-    Actor* m_player;
-    Actor* m_target;
-   // bool m_started;
-    //Transform2D* m_transform;
+    bool m_started;
+    Transform2D* m_transform;
     Collider* m_collider;
-    //Component** m_components;
-    int m_componentCount;
+    DynamicArray<Component*> m_components;
+private:
+    
 };
 
 template<typename T>
@@ -137,14 +125,14 @@ inline T* Actor::getComponent(T* component)
 {
     Component ptr = dynamic_cast<Component*>(component);
     if (ptr = nullptr)
-        return false;
+        return nullptr;
     else
     {
-        for (Component* element : m_components)
+        for (int i = 0; i < m_components.Length(); i++)
         {
-            if (element = component)
+            if (m_components = component)
             {
-                return element;
+                return m_components[i];
             }
         }
     }
@@ -158,6 +146,11 @@ inline T* Actor::addComponent(T* component)
         return nullptr;
     else
     {
+        Actor* owner = component->getOwner();
+        if (owner && owner != this)
+        {
+            return nullptr;
+        }
         m_components.Add(component);
         return component;
     }
@@ -168,9 +161,18 @@ inline T* Actor::removeComponent(T* component)
 {
     Component* ptr = dynamic_cast<Component*>(component);
     if (ptr == nullptr)
-        return false;
+        return nullptr;
     else
     {
-        return true;
+        if (!component)
+        {
+            return false;
+        }
+        if (m_components.Contains(component))
+        {
+            m_components.Remove(component);
+            return true;
+        }
     }
+    return false;
 }

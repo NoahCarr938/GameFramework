@@ -48,8 +48,15 @@ public:
 	/// </summary>
 	virtual void onDestroy() {};
 
+	virtual void setEnabled() { m_enabled = true; }
+	
+	virtual void setDisabled() { m_enabled = false; }
+
+	virtual bool getEnabled() { return m_enabled; }
+
 private:
 	const char* m_name;
 	Actor* m_owner;
+	bool m_enabled;
 };
 

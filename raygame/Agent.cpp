@@ -1,5 +1,9 @@
 #include "Agent.h"
 #include "Transform2D.h"
+#include "Component.h"
+#include "Collider.h"
+#include <string.h>
+
 
 Agent::Agent()
 {
@@ -7,60 +11,46 @@ Agent::Agent()
 
 Agent::Agent(float x, float y, const char* name)
 {
-	//Initialze default values
 	m_transform = new Transform2D(this);
-	m_transform->setLocalPosition({ x,y });
 	m_name = name;
+	m_transform->setLocalPosition({x, y});
 }
 
 Agent::~Agent()
 {
+	delete m_transform;
 }
 
-void Agent::Update(float deltaTime)
+void Agent::enableBehavior(int behavior)
 {
-	/*if (m_currentBehavior)
-		m_currentBehavior->Update(this, deltaTime);
-	m_Agent->update(deltaTime);*/
+	for (int i = 0; i <= 6; i++)
+	{
+		if (i >= m_components.Length())
+			break;
+		else if (i == behavior)
+			this->m_components[i]->setEnabled();
+	}
 }
 
-MathLibrary::Vector2 Agent::getPosition()
+void Agent::disableBehavior(int behavior)
 {
-	return position;
+	for (int i = 0; i <= 6; i++)
+	{
+		if (i >= m_components.Length())
+			break;
+		else if (i == behavior)
+			this->m_components[i]->setDisabled();
+	}
 }
 
-MathLibrary::Vector2 Agent::setPosition(Vector2 position)
+bool Agent::getBehavior(int behavior)
 {
-	return MathLibrary::Vector2();
+	for (int i = 0; i <= 6; i++)
+	{
+		if (i >= m_components.Length())
+			break;
+		else if (i == behavior)
+			this->m_components[i]->getEnabled();
+	}
+	return false;
 }
-
-MathLibrary::Vector2 Agent::getVelocity()
-{
-	return velocity;
-}
-
-MathLibrary::Vector2 Agent::setVelocity(Vector2 velocity)
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Agent::getForce()
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Agent::setForce()
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Agent::getTarget()
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Agent::setTarget(Agent* target)
-{
-	return MathLibrary::Vector2();
-}
-

@@ -2,20 +2,39 @@
 #include "raylib.h"
 #include "Actor.h"
 #include "Scene.h"
+#include "math.h"
 
 SeekComponent::SeekComponent(Actor* owner, Actor* target)
 {
-	/*agent->setTarget(MathLibrary::Vector2(640, 360));
-	target = MathLibrary::Vector2(640, 360);*/
+	m_target = target;
+	this->setDisabled();
 }
 
 SeekComponent::~SeekComponent()
 {
-	//agents.destroy();
+	setDisabled();
 }
 
 void SeekComponent::Update(float deltaTime)
 {
-	//Vector2 steeringForce = m_player->m_currentBehavior()->Seek(m_player, m_player->getTarget(), deltaTime);
-	m_player->update(deltaTime);
+	if (getEnabled() == true)
+	{
+		MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+		MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
+		MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
+        MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+		targetVector.normalize();
+        MathLibrary::Vector2 desiredVelocity = targetVector * getOwner()->getTransform()->getMaxVelocity();
+		MathLibrary::Vector2 steeringForce = desiredVelocity - playerVelocity;
+
+		// Time to set the new velocity that we have calculated
+		getOwner()->getTransform()->setVelocity(playerVelocity + (steeringForce * deltaTime));
+
+		// Time to set the new position that we have calculated
+		getOwner()->getTransform()->setLocalPosition(playerPosition + (playerVelocity * deltaTime));
+
+		// Rotates the player if we need to
+		getOwner()->getTransform()->setRotation(atan2(playerVelocity.x, playerVelocity.y));
+		getOwner()->getTransform()->rotate(1.00);
+	}
 }

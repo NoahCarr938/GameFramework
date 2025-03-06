@@ -1,46 +1,28 @@
 #include "Behavior.h"
 #include "Agent.h"
 
-Behavior::Behavior()
+Behavior::Behavior(Agent* owner)
 {
+	m_owner = owner;
+	m_behavior = 0;
+	for (int i = 0; i <= 6; i++)
+	{
+		m_owner->disableBehavior(m_behavior);
+	}
+	m_owner->enableBehavior(m_behavior);
+	this->setEnabled();
 }
 
 Behavior::~Behavior()
 {
+	setDisabled();
 }
 
-MathLibrary::Vector2 Behavior::seek(Agent* agent, MathLibrary::Vector2 target, float deltaTime)
+void Behavior::Update(float deltaTime)
 {
-	MathLibrary::Vector2 desiredVelocity = target - agent->getPosition();
-	desiredVelocity = desiredVelocity.normalize();
-	desiredVelocity * agent->getMaxVelocity();
-	MathLibrary::Vector2 steeringForce = desiredVelocity - agent->getVelocity();
-	steeringForce / agent->getMaxVelocity();
-	steeringForce * agent->getMaxForce();
-	return steeringForce;
-}
+	// Could do finite state machine in update
+	/*if (getEnabled() == true)
+	{
 
-MathLibrary::Vector2 Behavior::flee(Agent* agent, MathLibrary::Vector2 target, float deltaTime)
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Behavior::wander(Agent* agent, MathLibrary::Vector2 target, float deltaTime)
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Behavior::pursue(Agent* agent, MathLibrary::Vector2 target, float deltaTime)
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Behavior::evade(Agent* agent, MathLibrary::Vector2 target, float deltaTime)
-{
-	return MathLibrary::Vector2();
-}
-
-MathLibrary::Vector2 Behavior::arrive(Agent* agent, MathLibrary::Vector2 target, float deltaTime)
-{
-	return MathLibrary::Vector2();
+	}*/
 }

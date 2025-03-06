@@ -131,12 +131,22 @@ public:
     /// </summary>
     void updateTransforms();
 
+    /* Velocity variables and functions*/
+    void setVelocity(MathLibrary::Vector2 velocity) { m_velocity = velocity; }
+    void setMaxVelovity(float velocity) { m_maxVelocity = velocity; }
+    float getMaxVelocity() { return m_maxVelocity; }
+    MathLibrary::Vector2 getVelocity() { return m_velocity; }
+
 private:
     MathLibrary::Matrix3* m_globalMatrix;
     MathLibrary::Matrix3* m_localMatrix;
     MathLibrary::Matrix3* m_rotation;
     MathLibrary::Matrix3* m_translation;
     MathLibrary::Matrix3* m_scale;
+
+    // for velocity
+    float m_maxVelocity;
+    MathLibrary::Vector2 m_velocity;
 
     Transform2D** m_children;
     Transform2D* m_parent;
