@@ -9,7 +9,7 @@ public:
 	Node<T>(T value);
 	// Explicitely stating that the default node destructor is the destructor
 	~Node<T>() = default;
-
+	
 public:
 	// Holds the actual value
 	T value;

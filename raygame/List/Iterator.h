@@ -110,3 +110,5 @@ inline const bool Iterator<T>::operator!=(const Iterator<T>& other) const
 	// Check to make sure they dont point to the same thing
 	return m_current != other.m_current;
 }
+
+

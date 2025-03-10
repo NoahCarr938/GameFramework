@@ -2,7 +2,6 @@
 #include "Actor.h"
 #include "raylib.h"
 #include "Behavior.h"
-#include "list.h"
 #include "Component.h"
 
 class Agent : public Actor

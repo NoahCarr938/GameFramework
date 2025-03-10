@@ -3,6 +3,9 @@
 #include "SeekComponent.h"
 #include "Transform2D.h"
 #include "Agent.h"
+#include "Pathfinding/pathfinding.h"
+#include "Pathfinding/NodeMap.h"
+
 
 void SampleScene::start()
 {
@@ -34,9 +37,38 @@ void SampleScene::start()
 	addActor(bullet);
 }
 
-void SampleScene::update(double deltaTime)
+void SampleScene::update(float deltaTime)
 {
-	Scene::update(deltaTime);
+	/*Scene::update(deltaTime);*/
+
+	Pathfinding::Node a(500, 500);
+	Pathfinding::Node b(600, 400);
+	Pathfinding::Node c(600, 600);
+
+	a.ConnectTo(&b, 1);
+	a.ConnectTo(&c, 4);
+	List<Pathfinding::Node*> list;
+	Pathfinding::DrawGraph(&a, &list);
+
+	List<Pathfinding::Node*> path = { &a, &b, &c };
+	Pathfinding::DrawPath(path, RED);
+
+	Pathfinding::DrawNode(&a, false);
+	Pathfinding::DrawNode(&b, true);
+	Pathfinding::DrawNode(&c, false);
+
+	/*Nodemap nodemap;
+	nodeMap.cellSize = 32;
+	List<std::string> asciiMap;
+	asciiMap.pushBack("000000000000");
+	asciiMap.pushBack("010111011100");
+	asciiMap.pushBack("010101110110");
+	asciiMap.pushBack("011100000010");
+	asciiMap.pushBack("010111111110");
+	asciiMap.pushBack("010000001000");
+	asciiMap.pushBack("011111111110");
+	asciiMap.pushBack("000000000000");
+	nodeMap.Initialise(asciiMap);*/
 }
 
 void SampleScene::end()

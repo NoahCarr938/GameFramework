@@ -79,7 +79,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)raygame;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)raygame;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -113,7 +113,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)raygame;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)raygame;$(SolutionDir)thirdparty\raylib</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -161,6 +161,8 @@
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FleeComponent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pathfinding\NodeMap.cpp" />
+    <ClCompile Include="Pathfinding\pathfinding.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PursueComponent.cpp" />
     <ClCompile Include="SampleScene.cpp" />
@@ -188,6 +190,8 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Pathfinding\NodeMap.h" />
+    <ClInclude Include="Pathfinding\pathfinding.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PursueComponent.h" />
     <ClInclude Include="SampleScene.h" />

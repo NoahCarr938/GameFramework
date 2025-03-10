@@ -20,9 +20,8 @@ Behavior::~Behavior()
 
 void Behavior::Update(float deltaTime)
 {
-	// Could do finite state machine in update
-	/*if (getEnabled() == true)
+	if (getEnabled() == true)
 	{
 
-	}*/
+	}
 }

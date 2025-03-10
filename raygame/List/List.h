@@ -25,6 +25,7 @@ public:
 	T popBack();
 	bool insert(const T& value, int index);
 	int remove(const T& value);
+	Iterator<T> find(const T& value);
 	// Not going to remove the thing they are just going to get you it
 	T first() const;
 	T last() const;
@@ -152,7 +153,7 @@ inline T List<T>::popFront()
 		m_tail = nullptr;
 		m_length = 0;
 	}
-	else
+	else 
 	{
 		// Now we can safely delete m_head->previous without causing a memory leak
 		m_head = m_head->next;
@@ -219,7 +220,7 @@ inline bool List<T>::insert(const T& value, int index)
 		pushBack(value);
 		return true;
 	}
-
+		
 	// Loop through the entire index and whenever we find the specific spot in the list we want to perform the insert
 	// Reminder optimize for if we have an index close to the end of the list to where we have to loop less
 	// making a node pointer to hold our head
@@ -255,7 +256,7 @@ template<typename T>
 inline int List<T>::remove(const T& value)
 {
 	// Accounting for edge cases below
-
+	
 	// If there is nothing in the list then remove nothing
 	// If there is nothing in the list, the list is empty
 	if (!m_tail)
@@ -275,7 +276,7 @@ inline int List<T>::remove(const T& value)
 		node = m_head;
 		count++;
 	}
-
+	
 	// Verify node is valid
 	// Then verify tail is valid
 	// If tail's next is nullptr
@@ -305,8 +306,8 @@ inline int List<T>::remove(const T& value)
 			{
 				node->next->previous = node->previous;
 				// Making a temportary node pointer
-				// Gives two pointers pointing to the same thing
-				Node<T>* temp = node;
+			    // Gives two pointers pointing to the same thing
+			    Node<T>*temp = node;
 				node = node->next;
 				delete temp;
 				// Decrement length
@@ -319,7 +320,7 @@ inline int List<T>::remove(const T& value)
 				node = m_tail;
 				count++;
 			}
-
+			
 		}
 		else
 		{
@@ -328,6 +329,17 @@ inline int List<T>::remove(const T& value)
 	}
 	// If we get to the end and did not find anything return count
 	return count;
+}
+
+template<typename T>
+inline Iterator<T> List<T>::find(const T& value)
+{
+	for (Iterator<T> iter = begin(); iter != end(); iter++)
+	{
+		if (*iter == value)
+			return iter;
+	}
+	return Iterator<T>();
 }
 
 template<typename T>

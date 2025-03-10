@@ -5,7 +5,7 @@ class SampleScene :
 {
 public:
     void start() override;
-    void update(double deltaTime);
+    void update(float deltaTime) override;
     void end();
 };
 
