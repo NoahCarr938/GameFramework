@@ -113,4 +113,5 @@ private:
     static int m_currentSceneIndex;
     static const int m_screenWidth = 700;
     static const int m_screenHeight = 800;
+    static char* m_currentScene;
 };

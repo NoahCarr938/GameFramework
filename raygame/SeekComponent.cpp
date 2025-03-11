@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "math.h"
 
-SeekComponent::SeekComponent(Actor* owner, Actor* target)
+SeekComponent::SeekComponent(Actor* owner, Actor* target) : Component(owner, "SeekComponent")
 {
 	m_target = target;
 	this->setDisabled();

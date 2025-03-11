@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "Transform2D.h"
 #include "SampleScene.h"
+#include "SteeringBehaviorScene.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
@@ -27,9 +28,14 @@ void Engine::start()
 	InitWindow(screenWidth, screenHeight, "Intro To C++");
 	SetTargetFPS(0);
 
+	addScene(new SteeringBehaviorScene());
+	addScene(new SampleScene());
+
 	//Start the scene
-	m_currentSceneIndex = addScene(new SampleScene());
+	/*m_currentSceneIndex = addScene(new SampleScene());*/
+	m_currentSceneIndex = 0;
 	m_scenes[m_currentSceneIndex]->start();
+
 }
 
 void Engine::update(float deltaTime)

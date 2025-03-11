@@ -12,6 +12,7 @@ public:
 	void Update(float deltaTime);
 private:
 	Agent* m_owner;
+	int m_selection;
 	int m_behavior;
 };
 

@@ -16,7 +16,7 @@ void SampleScene::start()
 
 	/*addActor(test);*/
 
-	Agent* enemy = new Agent(150, 50, "Enemy");
+	/*Agent* enemy = new Agent(150, 50, "Enemy");
 	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
 	enemy->getTransform()->setScale({ 50, 50 });
 
@@ -34,7 +34,7 @@ void SampleScene::start()
 
 	addActor(player);
 	addActor(enemy);
-	addActor(bullet);
+	addActor(bullet);*/
 }
 
 void SampleScene::update(float deltaTime)
