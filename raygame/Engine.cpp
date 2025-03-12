@@ -3,6 +3,7 @@
 #include "Transform2D.h"
 #include "SampleScene.h"
 #include "SteeringBehaviorScene.h"
+#include "AStarScene.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
@@ -30,11 +31,12 @@ void Engine::start()
 
 	addScene(new SteeringBehaviorScene());
 	addScene(new SampleScene());
+	addScene(new AStarScene());
 
 	//Start the scene
 	/*m_currentSceneIndex = addScene(new SampleScene());*/
 	//m_currentSceneIndex = 0;
-	m_currentSceneIndex = 1;
+	m_currentSceneIndex = 2;
 	m_scenes[m_currentSceneIndex]->start();
 
 }
