@@ -2,7 +2,7 @@
 #include "NodeMap.h"
 #include "raylib.h"
 
-namespace pathfinding
+namespace DijkstrasPathfinding
 {
 	void NodeMap::Initialise(std::vector<std::string> asciiMap)
 	{

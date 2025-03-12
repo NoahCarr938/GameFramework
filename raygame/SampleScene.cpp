@@ -1,5 +1,5 @@
 #include "SampleScene.h"
-#include "Pathfinding/pathfinding.h"
+#include "Pathfinding/DijkstrasPathfinding.h"
 #include "Pathfinding/NodeMap.h"
 
 
@@ -38,7 +38,7 @@ void SampleScene::start()
 
 	// pathAgent is a pointer so we have to new it
 	// Since we have made it new we need to delete
-	m_pathAgent = new pathfinding::PathAgent;
+	m_pathAgent = new DijkstrasPathfinding::PathAgent;
 	// Setting the start node
 	m_pathAgent->SetNode(m_nodeMap.GetNode(1, 1));
 	m_pathAgent->speed = 128;
@@ -51,13 +51,13 @@ void SampleScene::update(float deltaTime)
 	Color lineColor = { 255, 255, 255, 255 };
 
 	m_nodeMap.Draw(true);
-	pathfinding::DrawPath(m_pathAgent->path, lineColor);
+	DijkstrasPathfinding::DrawPath(m_pathAgent->path, lineColor);
 
 	// read mouseclicks, left for start node, end for right node
 	if (IsMouseButtonPressed(0))
 	{
 		Vector2 mousePos = GetMousePosition();
-		pathfinding::Node* end = m_nodeMap.GetClosestNode(mousePos);
+		DijkstrasPathfinding::Node* end = m_nodeMap.GetClosestNode(mousePos);
 		m_pathAgent->GoToNode(end);
 	}
 

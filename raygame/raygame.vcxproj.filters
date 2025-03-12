@@ -86,7 +86,7 @@
     <ClCompile Include="FiniteStateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pathfinding\pathfinding.cpp">
+    <ClCompile Include="Pathfinding\DijkstrasPathfinding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Pathfinding\NodeMap.cpp">
@@ -99,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AStarScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathfinding\AStarPathfinding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -178,7 +181,7 @@
     <ClInclude Include="ArriveComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pathfinding\pathfinding.h">
+    <ClInclude Include="Pathfinding\DijkstrasPathfinding.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pathfinding\NodeMap.h">
@@ -191,6 +194,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AStarScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pathfinding\AStarPathfinding.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

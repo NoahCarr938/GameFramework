@@ -1,8 +1,6 @@
-#include "pathfinding.h"
-#include <algorithm>
-#include <vector> 
+#include "DijkstrasPathfinding.h"
 
-namespace pathfinding
+namespace DijkstrasPathfinding
 {
 	//Use this function to sort nodes using their gScore value
 	bool NodeSort(Node* i, Node* j) 

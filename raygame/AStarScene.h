@@ -10,6 +10,6 @@ public:
 	void end() override;
 
 private:
-	pathfinding::NodeMap m_nodeMapAStar;
-	pathfinding::PathAgent* m_pathAgentAStar;
+	DijkstrasPathfinding::NodeMap m_nodeMapAStar;
+	DijkstrasPathfinding::PathAgent* m_pathAgentAStar;
 };

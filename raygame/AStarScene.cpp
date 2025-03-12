@@ -34,7 +34,7 @@ void AStarScene::start()
 
 	// pathAgent is a pointer so we have to new it
 	// Since we have made it new we need to delete
-	m_pathAgentAStar = new pathfinding::PathAgent;
+	m_pathAgentAStar = new DijkstrasPathfinding::PathAgent;
 	// Setting the start node
 	m_pathAgentAStar->SetNode(m_nodeMapAStar.GetNode(1, 1));
 	m_pathAgentAStar->speed = 128;
@@ -45,14 +45,15 @@ void AStarScene::update(float deltaTime)
 	bool drawNodeMap = true;
 	Color lineColor = { 255, 255, 255, 255 };
 
+	// This is currently using Dijkstras's algorithm
 	m_nodeMapAStar.Draw(true);
-	pathfinding::DrawPath(m_pathAgentAStar->path, lineColor);
+	DijkstrasPathfinding::DrawPath(m_pathAgentAStar->path, lineColor);
 
 	// read mouseclicks, left for start node, end for right node
 	if (IsMouseButtonPressed(0))
 	{
 		Vector2 mousePos = GetMousePosition();
-		pathfinding::Node* end = m_nodeMapAStar.GetClosestNode(mousePos);
+		DijkstrasPathfinding::Node* end = m_nodeMapAStar.GetClosestNode(mousePos);
 		m_pathAgentAStar->GoToNode(end);
 	}
 

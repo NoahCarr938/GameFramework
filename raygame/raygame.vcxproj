@@ -162,9 +162,10 @@
     <ClCompile Include="FleeComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="AStarScene.cpp" />
+    <ClCompile Include="Pathfinding\AStarPathfinding.cpp" />
     <ClCompile Include="Pathfinding\NodeMap.cpp" />
     <ClCompile Include="Pathfinding\PathAgent.cpp" />
-    <ClCompile Include="Pathfinding\pathfinding.cpp" />
+    <ClCompile Include="Pathfinding\DijkstrasPathfinding.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PursueComponent.cpp" />
     <ClCompile Include="SampleScene.cpp" />
@@ -194,9 +195,10 @@
     <ClInclude Include="List.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="AStarScene.h" />
+    <ClInclude Include="Pathfinding\AStarPathfinding.h" />
     <ClInclude Include="Pathfinding\NodeMap.h" />
     <ClInclude Include="Pathfinding\PathAgent.h" />
-    <ClInclude Include="Pathfinding\pathfinding.h" />
+    <ClInclude Include="Pathfinding\DijkstrasPathfinding.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PursueComponent.h" />
     <ClInclude Include="SampleScene.h" />

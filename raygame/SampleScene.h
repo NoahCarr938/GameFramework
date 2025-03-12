@@ -14,8 +14,8 @@ public:
 private:
     // Need a NodeMap and PathAgent
     // Remember that they are in namespace Pathfinding
-    pathfinding::NodeMap m_nodeMap;
+    DijkstrasPathfinding::NodeMap m_nodeMap;
     // Path Agent is not actually an actor so we have to manually update it
-    pathfinding::PathAgent* m_pathAgent;
+    DijkstrasPathfinding::PathAgent* m_pathAgent;
 };
 

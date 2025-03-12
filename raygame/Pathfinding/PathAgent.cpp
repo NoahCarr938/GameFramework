@@ -1,6 +1,6 @@
 #include "PathAgent.h"
 
-namespace pathfinding
+namespace DijkstrasPathfinding
 {
     void PathAgent::SetNode(Node* node)
     {

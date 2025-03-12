@@ -1,9 +1,9 @@
 #pragma once
 #include "raylib.h"
-#include "pathfinding.h"
+#include "DijkstrasPathfinding.h"
 #include <vector>
 
-namespace pathfinding
+namespace DijkstrasPathfinding
 {
 	class PathAgent
 	{

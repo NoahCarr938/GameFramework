@@ -3,7 +3,8 @@
 #include <vector>
 #include <algorithm>
 
-namespace pathfinding {
+namespace DijkstrasPathfinding {
+	// Forward declaring the node struct
 	struct Node;
 
 	struct Edge {

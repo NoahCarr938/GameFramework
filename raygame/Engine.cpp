@@ -36,7 +36,7 @@ void Engine::start()
 	//Start the scene
 	/*m_currentSceneIndex = addScene(new SampleScene());*/
 	//m_currentSceneIndex = 0;
-	m_currentSceneIndex = 2;
+	m_currentSceneIndex = 0;
 	m_scenes[m_currentSceneIndex]->start();
 
 }
@@ -49,6 +49,23 @@ void Engine::update(float deltaTime)
 	//Update scene
 	m_scenes[m_currentSceneIndex]->update(deltaTime);
 	m_scenes[m_currentSceneIndex]->updateUI(deltaTime);
+
+	// Switches between the scenes when the "W" key is pressed
+	if (IsKeyPressed(KEY_W))
+	{
+		switch (m_currentSceneIndex)
+		{
+		case 0:
+			m_currentSceneIndex = 0;
+			m_scenes[m_currentSceneIndex]->start();
+		case 1:
+			m_currentSceneIndex = 1;
+			m_scenes[m_currentSceneIndex]->start();
+		case 2:
+			m_currentSceneIndex = 2;
+			m_scenes[m_currentSceneIndex]->start();
+		}
+	}
 }
 
 void Engine::draw()
