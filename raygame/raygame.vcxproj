@@ -162,6 +162,7 @@
     <ClCompile Include="FleeComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pathfinding\NodeMap.cpp" />
+    <ClCompile Include="Pathfinding\PathAgent.cpp" />
     <ClCompile Include="Pathfinding\pathfinding.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PursueComponent.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="List.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Pathfinding\NodeMap.h" />
+    <ClInclude Include="Pathfinding\PathAgent.h" />
     <ClInclude Include="Pathfinding\pathfinding.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PursueComponent.h" />

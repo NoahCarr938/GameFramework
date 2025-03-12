@@ -28,7 +28,7 @@ void Behavior::Update(float deltaTime)
 		DrawText("Seeking", 10, 10, 10, RED);
 		if (m_owner->getBehavior(0) == false)
 		{
-			DrawText("Seek disabled")
+			DrawText("Seek disabled", 50, 50, 10, RED);
 		}
 		// Disables the current behavior
 		if (IsKeyPressed(KEY_SPACE))

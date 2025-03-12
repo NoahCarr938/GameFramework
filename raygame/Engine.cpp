@@ -33,7 +33,8 @@ void Engine::start()
 
 	//Start the scene
 	/*m_currentSceneIndex = addScene(new SampleScene());*/
-	m_currentSceneIndex = 0;
+	//m_currentSceneIndex = 0;
+	m_currentSceneIndex = 1;
 	m_scenes[m_currentSceneIndex]->start();
 
 }

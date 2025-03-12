@@ -1,77 +1,72 @@
 #include "SampleScene.h"
-#include "SpriteComponent.h"
-#include "SeekComponent.h"
-#include "Transform2D.h"
-#include "Agent.h"
 #include "Pathfinding/pathfinding.h"
 #include "Pathfinding/NodeMap.h"
 
 
 void SampleScene::start()
 {
-	//This is a better comment
-	/*Actor* test = new Actor(50, 50, "Test");
-	test->addComponent(new SpriteComponent(test, "Images/player.png"));
-	test->getTransform()->setScale({ 50, 50 });*/
+	Scene::start();
 
-	/*addActor(test);*/
+	// We dont need to make the node map it is in the header file
+	m_nodeMap.cellSize = 32;
+	std::vector<std::string> asciiMap;
+	asciiMap.push_back("000000000000");
+	asciiMap.push_back("010111011110");
+	asciiMap.push_back("010101110110");
+	asciiMap.push_back("011100000010");
+	asciiMap.push_back("010111111110");
+	asciiMap.push_back("010000001000");
+	asciiMap.push_back("01111111110");
+	asciiMap.push_back("000010000010");
+	asciiMap.push_back("000010000000");
+	asciiMap.push_back("010111011100");
+	asciiMap.push_back("010101110110");
+	asciiMap.push_back("011100000010");
+	asciiMap.push_back("010111111110");
+	asciiMap.push_back("010000001000");
+	asciiMap.push_back("011111111110");
+	asciiMap.push_back("000010001010");
+	asciiMap.push_back("000010001000");
+	asciiMap.push_back("010111011100");
+	asciiMap.push_back("010101110110");
+	asciiMap.push_back("011100000010");
+	asciiMap.push_back("010111111110");
+	asciiMap.push_back("010000001000");
+	asciiMap.push_back("011111111110");
+	asciiMap.push_back("000000000000");
+	m_nodeMap.Initialise(asciiMap);
 
-	/*Agent* enemy = new Agent(150, 50, "Enemy");
-	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
-	enemy->getTransform()->setScale({ 50, 50 });
-
-	Actor* bullet = new Actor(250, 50, "Bullet");
-	bullet->addComponent(new SpriteComponent(bullet, "Images/bullet.png"));
-	bullet->getTransform()->setScale({ 50, 50 });
-
-	Actor* player = new Actor(50, 50, "Player");
-	player->addComponent(new SpriteComponent(player, "Images/player.png"));
-	player->getTransform()->setScale({ 50, 50 });
-
-	enemy->getTransform()->setMaxVelovity(100);
-	enemy->addComponent(new Behavior(enemy));
-	enemy->addComponent(new SeekComponent(enemy, player));
-
-	addActor(player);
-	addActor(enemy);
-	addActor(bullet);*/
+	// pathAgent is a pointer so we have to new it
+	// Since we have made it new we need to delete
+	m_pathAgent = new pathfinding::PathAgent;
+	// Setting the start node
+	m_pathAgent->SetNode(m_nodeMap.GetNode(1, 1));
+	m_pathAgent->speed = 64;
 }
 
 void SampleScene::update(float deltaTime)
 {
-	/*Scene::update(deltaTime);*/
+	// We do not have to begin and end the drawing, we are doing that in scene;
+	bool drawNodeMap = true;
+	Color lineColor = { 255, 255, 255, 255 };
 
-	Pathfinding::Node a(500, 500);
-	Pathfinding::Node b(600, 400);
-	Pathfinding::Node c(600, 600);
+	m_nodeMap.Draw(true);
+	pathfinding::DrawPath(m_pathAgent->path, lineColor);
 
-	a.ConnectTo(&b, 1);
-	a.ConnectTo(&c, 4);
-	List<Pathfinding::Node*> list;
-	Pathfinding::DrawGraph(&a, &list);
+	// read mouseclicks, left for start node, end for right node
+	if (IsMouseButtonPressed(0))
+	{
+		Vector2 mousePos = GetMousePosition();
+		pathfinding::Node* end = m_nodeMap.GetClosestNode(mousePos);
+		m_pathAgent->GoToNode(end);
+	}
 
-	List<Pathfinding::Node*> path = { &a, &b, &c };
-	Pathfinding::DrawPath(path, RED);
-
-	Pathfinding::DrawNode(&a, false);
-	Pathfinding::DrawNode(&b, true);
-	Pathfinding::DrawNode(&c, false);
-
-	/*Nodemap nodemap;
-	nodeMap.cellSize = 32;
-	List<std::string> asciiMap;
-	asciiMap.pushBack("000000000000");
-	asciiMap.pushBack("010111011100");
-	asciiMap.pushBack("010101110110");
-	asciiMap.pushBack("011100000010");
-	asciiMap.pushBack("010111111110");
-	asciiMap.pushBack("010000001000");
-	asciiMap.pushBack("011111111110");
-	asciiMap.pushBack("000000000000");
-	nodeMap.Initialise(asciiMap);*/
+	// Updating and drawing the pathAgent
+	m_pathAgent->Update(deltaTime);
+	m_pathAgent->Draw();
 }
 
 void SampleScene::end()
 {
-	Scene::end();
+	delete m_pathAgent;
 }

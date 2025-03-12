@@ -331,6 +331,7 @@ inline int List<T>::remove(const T& value)
 	return count;
 }
 
+// Iterates through the whole list which is o(n)
 template<typename T>
 inline Iterator<T> List<T>::find(const T& value)
 {
