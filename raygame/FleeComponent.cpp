@@ -4,9 +4,9 @@
 #include "Scene.h"
 #include "math.h"
 
-FleeComponent::FleeComponent(Actor* owner, Actor* enemy) : Component(owner, "SeekComponent")
+FleeComponent::FleeComponent(Actor* owner, Actor* target) : Component(owner, "SeekComponent")
 {
-	m_enemy = enemy;
+	m_target = target;
 	this->setDisabled();
 }
 
@@ -20,11 +20,11 @@ void FleeComponent::Update(float deltaTime)
 	if (getEnabled() == true)
 	{
 		MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
-		MathLibrary::Vector2 enemyPosition = m_enemy->getTransform()->getLocalPosition();
+		MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 		MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
-		MathLibrary::Vector2 enemyVector = enemyPosition - playerPosition;
-		enemyVector.normalize();
-		MathLibrary::Vector2 desiredVelocity = enemyVector * getOwner()->getTransform()->getMaxVelocity();
+		MathLibrary::Vector2 targetVector = playerPosition - targetPosition;
+		targetVector.normalize();
+		MathLibrary::Vector2 desiredVelocity = targetVector * getOwner()->getTransform()->getMaxVelocity();
 		MathLibrary::Vector2 steeringForce = desiredVelocity - playerVelocity;
 
 		// Time to set the new velocity that we have calculated

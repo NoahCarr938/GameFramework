@@ -5,17 +5,9 @@
 #include "Transform2D.h"
 #include "Agent.h"
 #include "raylib.h"
-#include "AnimatedSpriteComponent.h"
-
-AnimatedSpriteComponent sprite;
 
 void SteeringBehaviorScene::start()
 {
-	
-
-	sprite.AddFrame(frame1, 0.3f);
-	sprite.AddFrame(frame2, 0.3f);
-
 	Agent* enemy = new Agent(150, 50, "Enemy");
 	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
 	enemy->getTransform()->setScale({ 50, 50 });
@@ -35,19 +27,4 @@ void SteeringBehaviorScene::start()
 	addActor(player);
 	addActor(enemy);
 	//addActor(bullet);
-}
-
-void SteeringBehaviorScene::update(float deltaTime)
-{
-	deltaTime = GetFrameTime();
-	sprite.Update(deltaTime);
-
-	sprite.Draw(10, 10);
-
-}
-
-void SteeringBehaviorScene::end()
-{
-	UnloadTexture(frame1);
-	UnloadTexture(frame2);
 }

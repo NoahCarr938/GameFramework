@@ -9,11 +9,11 @@ class FleeComponent : public Component
 {
 public:
 	FleeComponent() {};
-	FleeComponent(Actor* owner, Actor* enemy);
+	FleeComponent(Actor* owner, Actor* target);
 	~FleeComponent();
 	virtual void Update(float deltaTime);
 
 private:
 
-	Actor* m_enemy;
+	Actor* m_target;
 };
