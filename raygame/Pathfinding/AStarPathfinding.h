@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 
-namespace AStarpathfinding {
+namespace AStarPathfinding {
 	// Forward declaring the node struct
 	struct Node;
 

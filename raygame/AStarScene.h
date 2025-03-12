@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
-#include "Pathfinding/NodeMap.h"
-#include "Pathfinding/PathAgent.h"
+#include "Pathfinding/AStarNodeMap.h"
+#include "Pathfinding/AStarPathAgent.h"
 
 class AStarScene : public Scene{
 public:
@@ -10,6 +10,6 @@ public:
 	void end() override;
 
 private:
-	DijkstrasPathfinding::NodeMap m_nodeMapAStar;
-	DijkstrasPathfinding::PathAgent* m_pathAgentAStar;
+	AStarPathfinding::AStarNodeMap m_nodeMapAStar;
+	AStarPathfinding::AStarPathAgent* m_pathAgentAStar;
 };

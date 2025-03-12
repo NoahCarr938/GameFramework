@@ -31,7 +31,7 @@ void Behavior::Update(float deltaTime)
 			DrawText("Seek disabled", 50, 50, 10, RED);
 		}
 		// Disables the current behavior
-		if (IsKeyPressed(KEY_SPACE))
+		if (IsKeyPressed(KEY_S))
 		{
 			switch (m_selection)
 			{

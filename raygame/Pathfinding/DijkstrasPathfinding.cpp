@@ -1,4 +1,6 @@
 #include "DijkstrasPathfinding.h"
+#include <algorithm>
+#include <vector> 
 
 namespace DijkstrasPathfinding
 {

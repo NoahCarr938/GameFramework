@@ -14,6 +14,6 @@ public:
 	virtual void Update(float deltaTime);
 
 private:
-	// Try agent but if it does not work use actor
+
 	Actor* m_target;
 };

@@ -149,6 +149,7 @@
     <ClCompile Include="AABBCollider.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="AnimatedSpriteComponent.cpp" />
     <ClCompile Include="ArriveComponent.cpp" />
     <ClCompile Include="Behavior.cpp" />
     <ClCompile Include="BulletActor.cpp" />
@@ -162,6 +163,8 @@
     <ClCompile Include="FleeComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="AStarScene.cpp" />
+    <ClCompile Include="Pathfinding\AStarNodeMap.cpp" />
+    <ClCompile Include="Pathfinding\AStarPathAgent.cpp" />
     <ClCompile Include="Pathfinding\AStarPathfinding.cpp" />
     <ClCompile Include="Pathfinding\NodeMap.cpp" />
     <ClCompile Include="Pathfinding\PathAgent.cpp" />
@@ -180,6 +183,7 @@
     <ClInclude Include="AABBCollider.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="AnimatedSpriteComponent.h" />
     <ClInclude Include="ArriveComponent.h" />
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="BulletActor.h" />
@@ -195,6 +199,8 @@
     <ClInclude Include="List.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="AStarScene.h" />
+    <ClInclude Include="Pathfinding\AStarNodeMap.h" />
+    <ClInclude Include="Pathfinding\AStarPathAgent.h" />
     <ClInclude Include="Pathfinding\AStarPathfinding.h" />
     <ClInclude Include="Pathfinding\NodeMap.h" />
     <ClInclude Include="Pathfinding\PathAgent.h" />

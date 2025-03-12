@@ -51,7 +51,7 @@ void Engine::update(float deltaTime)
 	m_scenes[m_currentSceneIndex]->updateUI(deltaTime);
 
 	// Switches between the scenes when the "W" key is pressed
-	if (IsKeyPressed(KEY_W))
+	if (IsKeyPressed(KEY_SPACE))
 	{
 		switch (m_currentSceneIndex)
 		{
