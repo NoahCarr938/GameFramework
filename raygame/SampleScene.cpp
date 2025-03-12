@@ -10,30 +10,30 @@ void SampleScene::start()
 	// We dont need to make the node map it is in the header file
 	m_nodeMap.cellSize = 32;
 	std::vector<std::string> asciiMap;
-	asciiMap.push_back("000000000000");
-	asciiMap.push_back("010111011110");
-	asciiMap.push_back("010101110110");
-	asciiMap.push_back("011100000010");
-	asciiMap.push_back("010111111110");
-	asciiMap.push_back("010000001000");
-	asciiMap.push_back("01111111110");
-	asciiMap.push_back("000010000010");
-	asciiMap.push_back("000010000000");
-	asciiMap.push_back("010111011100");
-	asciiMap.push_back("010101110110");
-	asciiMap.push_back("011100000010");
-	asciiMap.push_back("010111111110");
-	asciiMap.push_back("010000001000");
-	asciiMap.push_back("011111111110");
-	asciiMap.push_back("000010001010");
-	asciiMap.push_back("000010001000");
-	asciiMap.push_back("010111011100");
-	asciiMap.push_back("010101110110");
-	asciiMap.push_back("011100000010");
-	asciiMap.push_back("010111111110");
-	asciiMap.push_back("010000001000");
-	asciiMap.push_back("011111111110");
-	asciiMap.push_back("000000000000");
+	asciiMap.push_back("000000000000000000000");
+	asciiMap.push_back("010111000000000111100");
+	asciiMap.push_back("010101111111111100110");
+	asciiMap.push_back("011100000010010000000");
+	asciiMap.push_back("010111111111110000000");
+	asciiMap.push_back("010000001000000000000");
+	asciiMap.push_back("011111111110000000000");
+	asciiMap.push_back("000010000000000000000");
+	asciiMap.push_back("000010000000000000000");
+	asciiMap.push_back("010111011100000000000");
+	asciiMap.push_back("010101110110000000000");
+	asciiMap.push_back("011100000010000000000");
+	asciiMap.push_back("010111111110000000000");
+	asciiMap.push_back("010000001000000000000");
+	asciiMap.push_back("011111111110000000000");
+	asciiMap.push_back("000010001010000000000");
+	asciiMap.push_back("000010001000000000000");
+	asciiMap.push_back("010111011100000000000");
+	asciiMap.push_back("010101110110000000000");
+	asciiMap.push_back("011100000010000000000");
+	asciiMap.push_back("010111111110000000000");
+	asciiMap.push_back("010000001000000000000");
+	asciiMap.push_back("011111111110000000000");
+	asciiMap.push_back("000000000000000000000");
 	m_nodeMap.Initialise(asciiMap);
 
 	// pathAgent is a pointer so we have to new it
@@ -41,7 +41,7 @@ void SampleScene::start()
 	m_pathAgent = new pathfinding::PathAgent;
 	// Setting the start node
 	m_pathAgent->SetNode(m_nodeMap.GetNode(1, 1));
-	m_pathAgent->speed = 64;
+	m_pathAgent->speed = 128;
 }
 
 void SampleScene::update(float deltaTime)
