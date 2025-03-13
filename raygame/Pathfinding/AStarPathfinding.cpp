@@ -1,10 +1,10 @@
 #include "AStarPathfinding.h"
 
 namespace AStarPathfinding {
-	//Use this function to sort nodes using their gScore value
+	//Use this function to sort nodes using their fScore value
 	bool NodeSort(Node* i, Node* j)
 	{
-		return (i->gScore < j->gScore);
+		return (i->fScore < j->fScore);
 	}
 
 	void Node::ConnectTo(Node* other, float cost)
@@ -29,6 +29,8 @@ namespace AStarPathfinding {
 
 		//Initialize the starting node
 		startNode->gScore = 0;
+		startNode->hScore = 0;
+		startNode->fScore = 0;
 		startNode->previous = nullptr;
 
 		//Create our temporary lists for storing nodes
@@ -69,6 +71,12 @@ namespace AStarPathfinding {
 				if (std::find(openList.begin(), openList.end(), e.target) == openList.end()) {
 					//Calculate the target node's G Score
 					e.target->gScore = currentNode->gScore + e.cost;
+
+					// Calculating the h score
+					e.target->hScore = sqrt(((endNode->position.x - currentNode->position.x) * (endNode->position.x - currentNode->position.x)) + ((endNode->position.y - currentNode->position.y) * (endNode->position.y - currentNode->position.y)));
+
+					e.target->fScore = e.target->gScore + e.target->fScore;
+
 					//Set the target node's previous to currentNode
 					e.target->previous = currentNode;
 					//Find the earliest point we should insert the node
@@ -85,10 +93,17 @@ namespace AStarPathfinding {
 				}
 				//Otherwise the target node IS in the open list
 				else {
-					//Compare the new G Score to the old one before updating
-					if (currentNode->gScore + e.cost < e.target->gScore) {
+					//Compare the new f Score to the old one before updating
+					if (currentNode->fScore + e.cost < e.target->fScore) {
 						//Calculate the target node's G Score
 						e.target->gScore = currentNode->gScore + e.cost;
+
+						// Calculating the h score
+						e.target->hScore = sqrt(((endNode->position.x - currentNode->position.x) * (endNode->position.x - currentNode->position.x)) + ((endNode->position.y - currentNode->position.y) * (endNode->position.y - currentNode->position.y)));
+
+						// Adding the g and h score to get the f score
+						e.target->fScore = e.target->gScore + e.target->fScore;
+
 						//Set the target node's previous to currentNode
 						e.target->previous = currentNode;
 					}
@@ -119,8 +134,12 @@ namespace AStarPathfinding {
 
 	void DrawNode(Node* node, bool selected)
 	{
-		static char buffer[10];
-		sprintf_s(buffer, "%.0f", node->gScore);
+		static char bufferg[10];
+		static char bufferh[10];
+		static char bufferf[10];
+		sprintf_s(bufferg, "%.0f", node->gScore);
+		sprintf_s(bufferh, "%.0f", node->hScore);
+		sprintf_s(bufferf, "%.0f", node->fScore);
 
 		//Draw the circle for the outline
 		DrawCircle(node->position.x, node->position.y, 25, YELLOW);
@@ -134,7 +153,9 @@ namespace AStarPathfinding {
 			DrawCircle(node->position.x, node->position.y, 22, BLACK);
 		}
 		//Draw the text
-		DrawText(buffer, node->position.x - 10, node->position.y - 10, 15, WHITE);
+		DrawText(bufferg, node->position.x - 10, node->position.y - 10, 15, WHITE);
+		DrawText(bufferh, node->position.x + 10, node->position.y - 10, 15, WHITE);
+		DrawText(bufferf, node->position.x, node->position.y - 10, 15, WHITE);
 	}
 
 	void DrawGraph(Node* node, std::vector<Node*>* drawnList)

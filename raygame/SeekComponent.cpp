@@ -35,6 +35,6 @@ void SeekComponent::Update(float deltaTime)
 
 		// Rotates the player if we need to
 		getOwner()->getTransform()->setRotation(atan2(playerVelocity.x, playerVelocity.y));
-		getOwner()->getTransform()->rotate(1.00);
+		getOwner()->getTransform()->rotate(-1.00);
 	}
 }

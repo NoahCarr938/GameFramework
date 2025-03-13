@@ -36,6 +36,10 @@ void Engine::start()
 	//Start the scene
 	/*m_currentSceneIndex = addScene(new SampleScene());*/
 	//m_currentSceneIndex = 0;
+	m_currentSceneIndex = 2;
+	m_scenes[m_currentSceneIndex]->start();
+	m_currentSceneIndex = 1;
+	m_scenes[m_currentSceneIndex]->start();
 	m_currentSceneIndex = 0;
 	m_scenes[m_currentSceneIndex]->start();
 
@@ -43,6 +47,15 @@ void Engine::start()
 
 void Engine::update(float deltaTime)
 {
+	switch (m_currentSceneIndex)
+	{
+	case 0:
+		break;
+	case 1:
+		break;
+	case2:
+		break;
+	}
 	//Clean up actors marked for destruction
 	destroyActorsInList();
 
@@ -50,20 +63,16 @@ void Engine::update(float deltaTime)
 	m_scenes[m_currentSceneIndex]->update(deltaTime);
 	m_scenes[m_currentSceneIndex]->updateUI(deltaTime);
 
+	
+
 	// Switches between the scenes when the "W" key is pressed
-	if (IsKeyPressed(KEY_SPACE))
+	if (IsKeyDown(KEY_SPACE))
 	{
-		switch (m_currentSceneIndex)
+		m_currentSceneIndex++;
+
+		if (m_currentSceneIndex >= 3)
 		{
-		case 0:
 			m_currentSceneIndex = 0;
-			m_scenes[m_currentSceneIndex]->start();
-		case 1:
-			m_currentSceneIndex = 1;
-			m_scenes[m_currentSceneIndex]->start();
-		case 2:
-			m_currentSceneIndex = 2;
-			m_scenes[m_currentSceneIndex]->start();
 		}
 	}
 }

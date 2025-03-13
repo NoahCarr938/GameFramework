@@ -22,11 +22,16 @@ void EvadeComponent::Update(float deltaTime)
 		MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
 		MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 		MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
-		MathLibrary::Vector2 targetVector = playerPosition - targetPosition;
+		MathLibrary::Vector2 targetVelocity = m_target->getTransform()->getVelocity();
+		// The point that the target is going to
+		MathLibrary::Vector2 goToPoint = targetPosition + targetVelocity;
+		// Calculates a vector to the target position along with the point the target is going to.
+		MathLibrary::Vector2 targetVector = goToPoint - playerPosition;
 		targetVector.normalize();
 
-		MathLibrary::Vector2 desiredVelocity = playerPosition + targetVector - targetPosition;
-		MathLibrary::Vector2 steeringForce = desiredVelocity.normalize() * getOwner()->getTransform()->getMaxVelocity() - playerVelocity;
+		// Max velocity is negative because we are trying to avoid it.
+		MathLibrary::Vector2 desiredVelocity = targetVector * -(getOwner()->getTransform()->getMaxVelocity());
+		MathLibrary::Vector2 steeringForce = desiredVelocity - playerVelocity;
 
 		// Time to set the new velocity that we have calculated
 		getOwner()->getTransform()->setVelocity(playerVelocity + (steeringForce * deltaTime));
@@ -36,6 +41,6 @@ void EvadeComponent::Update(float deltaTime)
 
 		// Rotates the player if we need to
 		getOwner()->getTransform()->setRotation(atan2(playerVelocity.x, playerVelocity.y));
-		getOwner()->getTransform()->rotate(1.00);
+		getOwner()->getTransform()->rotate(-1.00);
 	}
 }
