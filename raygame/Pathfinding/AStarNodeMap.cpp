@@ -6,7 +6,9 @@ namespace AStarPathfinding
 {
 	void AStarNodeMap::Initialise(std::vector<std::string> asciiMap)
 	{
+		// This is the legend
 		const char emptySquare = '0';
+		// const char mud = 'm';
 
 		// assume all strings are the same length, so we'll size the map according to the number of strings and the length of the first one
 		height = asciiMap.size();
@@ -27,8 +29,17 @@ namespace AStarPathfinding
 				// get the x-th character, or return an empty node if the string isn't long enough 
 				char tile = x < line.size() ? line[x] : emptySquare;
 
+				// This is what you change if you want to have more than 0 and 1 for the nodemap
 				// create a node for anything but a '.' character
 				// position it in the middle of the cell, hence the +0.5f's
+				//switch (line[x])
+				//{
+				//case '0':
+				//	// add in code here that is below
+				//	break;
+				//case 'm':
+				//	break;
+				//}
 				nodes[x + width * y] = tile == emptySquare ? nullptr : new Node((x + 0.5f) * cellSize, (y + 0.5f) * cellSize);
 			}
 		}
@@ -64,6 +75,8 @@ namespace AStarPathfinding
 
 	void AStarNodeMap::Draw(bool drawConnections)
 	{
+		// Try to draw nodes as red for the ones we have passed through
+		
 		// red blocks
 		Color cellColor;
 		cellColor.a = 255;

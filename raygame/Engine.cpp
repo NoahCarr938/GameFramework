@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include "raylib.h"
 #include "Transform2D.h"
-#include "SampleScene.h"
+#include "DijkstrasScene.h"
 #include "SteeringBehaviorScene.h"
 #include "AStarScene.h"
 
@@ -30,7 +30,7 @@ void Engine::start()
 	SetTargetFPS(0);
 
 	addScene(new SteeringBehaviorScene());
-	addScene(new SampleScene());
+	addScene(new DijkstrasScene());
 	addScene(new AStarScene());
 
 	//Start the scene
@@ -66,7 +66,7 @@ void Engine::update(float deltaTime)
 	
 
 	// Switches between the scenes when the "W" key is pressed
-	if (IsKeyDown(KEY_SPACE))
+	if (IsKeyPressed(KEY_SPACE))
 	{
 		m_currentSceneIndex++;
 

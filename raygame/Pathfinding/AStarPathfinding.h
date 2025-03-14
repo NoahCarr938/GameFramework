@@ -22,6 +22,8 @@ namespace AStarPathfinding {
 
 		Vector2 position;
 
+		// You may have to store here what type a node is.
+		//char type '0';
 		float gScore;
 		float hScore;
 		float fScore;

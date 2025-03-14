@@ -6,7 +6,7 @@ void AStarScene::start()
 {
 	m_nodeMapAStar.cellSize = 32;
 	std::vector<std::string> asciiMap;
-	asciiMap.push_back("000000000000000000000");
+	/*asciiMap.push_back("000000000000000000000");
 	asciiMap.push_back("010111000000000111100");
 	asciiMap.push_back("010101111111111100110");
 	asciiMap.push_back("011100000010010000010");
@@ -29,6 +29,30 @@ void AStarScene::start()
 	asciiMap.push_back("010111111111111111010");
 	asciiMap.push_back("010000001000000001010");
 	asciiMap.push_back("011111111110000001110");
+	asciiMap.push_back("000000000000000000000");*/
+	asciiMap.push_back("000000000000000000000");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111100110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011100000000000111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011101111111110111110");
+	asciiMap.push_back("011101111111110111110");
+	asciiMap.push_back("011101111111110111110");
+	asciiMap.push_back("011110111111101111110");
+	asciiMap.push_back("011111011111011111110");
+	asciiMap.push_back("011111100000111111110");
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");
 	asciiMap.push_back("000000000000000000000");
 	m_nodeMapAStar.Initialise(asciiMap);
 

@@ -1,4 +1,6 @@
 #include <iostream>
+#include "FiniteStateMachine.h"
+#include "raylib.h"
 
 //int main()
 //{
@@ -31,3 +33,39 @@
 //		break;
 //	}
 //}
+
+FiniteStateMachineComponent::FiniteStateMachineComponent(Actor* owner)
+{
+	this->setDisabled();
+}
+
+FiniteStateMachineComponent::~FiniteStateMachineComponent()
+{
+	setDisabled();
+}
+
+void FiniteStateMachineComponent::handleSteeringBehaviors()
+{
+	int state = 0;
+
+	switch (state)
+	{
+	case 0:
+		break;
+	case1:
+		break;
+	case2:
+		break;
+	case3:
+		break;
+	}
+
+	if (!IsKeyPressed)
+	{
+		state = 0;
+	}
+	if (IsKeyPressed(KEY_W))
+	{
+		state = 1;
+	}
+}

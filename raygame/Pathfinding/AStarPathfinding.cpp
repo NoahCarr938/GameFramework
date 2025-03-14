@@ -1,4 +1,5 @@
 #include "AStarPathfinding.h"
+#include <chrono>
 
 namespace AStarPathfinding {
 	//Use this function to sort nodes using their fScore value
@@ -109,6 +110,10 @@ namespace AStarPathfinding {
 					}
 				}
 			}
+			/*auto end = std::chrono::high_resolution_clock::now();
+				auto duration = end - start;
+				auto durationAsValue = std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count();
+				return 0;*/
 		}
 
 		//Create path in reverse from endNode to startNode
@@ -130,6 +135,9 @@ namespace AStarPathfinding {
 	{
 		for (int i = 1; i < path.size(); i++)
 			DrawLine(path[i - 1]->position.x, path[i - 1]->position.y, path[i]->position.x, path[i]->position.y, lineColor);
+
+		//for (int i = 1; i < path.size(); i++)
+		//	/*DrawCircle(path[i-1]->position.x, path[i-1]->position.y, 15, GREEN);*/
 	}
 
 	void DrawNode(Node* node, bool selected)

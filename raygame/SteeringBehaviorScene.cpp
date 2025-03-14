@@ -1,5 +1,5 @@
 #include "SteeringBehaviorScene.h"
-#include "SampleScene.h"
+#include "DijkstrasScene.h"
 #include "SpriteComponent.h"
 #include "SeekComponent.h"
 #include "Transform2D.h"

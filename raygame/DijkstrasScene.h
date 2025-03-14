@@ -3,7 +3,7 @@
 #include "Pathfinding/NodeMap.h"
 #include "Pathfinding/PathAgent.h"
 
-class SampleScene :
+class DijkstrasScene :
     public Scene
 {
 public:

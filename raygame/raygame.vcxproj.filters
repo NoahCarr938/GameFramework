@@ -47,7 +47,7 @@
     <ClCompile Include="Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SampleScene.cpp">
+    <ClCompile Include="DijkstrasScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -142,7 +142,7 @@
     <ClInclude Include="Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SampleScene.h">
+    <ClInclude Include="DijkstrasScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DynamicArray.h">
@@ -215,6 +215,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AnimatedSpriteComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FiniteStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

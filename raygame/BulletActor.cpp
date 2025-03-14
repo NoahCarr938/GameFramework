@@ -4,7 +4,7 @@
 #include "raylib.h"
 #include "Transform2D.h"
 #include "CircleCollider.h"
-#include "SampleScene.h"
+#include "DijkstrasScene.h"
 
 BulletActor::BulletActor()
 {
