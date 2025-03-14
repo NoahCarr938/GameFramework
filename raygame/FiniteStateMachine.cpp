@@ -51,6 +51,14 @@ void FiniteStateMachineComponent::handleSteeringBehaviors()
 	switch (state)
 	{
 	case 0:
+		if (!IsKeyPressed)
+		{
+			state = 0;
+		}
+		else if (IsKeyPressed(KEY_W))
+		{
+			state = 1;
+		}
 		break;
 	case1:
 		break;
@@ -60,12 +68,6 @@ void FiniteStateMachineComponent::handleSteeringBehaviors()
 		break;
 	}
 
-	if (!IsKeyPressed)
-	{
-		state = 0;
-	}
-	if (IsKeyPressed(KEY_W))
-	{
-		state = 1;
-	}
+	
+	
 }
