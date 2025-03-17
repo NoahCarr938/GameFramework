@@ -12,7 +12,7 @@ public:
 	WanderComponent(Actor* owner);
 	~WanderComponent();
 	virtual void Update(float deltaTime);
-	// Move will be used to set the position, and calculat velocity and steering behavior.
+	// Move will be used to set the position, and calculate velocity and steering behavior.
 	void Move(MathLibrary::Vector2 target, float deltaTime);
 	// Update will be used to update the wander position and wanderComponentCircle
 
