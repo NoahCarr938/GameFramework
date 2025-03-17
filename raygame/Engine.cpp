@@ -47,13 +47,18 @@ void Engine::start()
 
 void Engine::update(float deltaTime)
 {
+	DrawText("Press Space To Switch Scenes", 150, 700, 25, RED);
 	switch (m_currentSceneIndex)
 	{
 	case 0:
+		DrawText("Current Scene: Steering Behavior Scene", 100, 740, 25, RED);
 		break;
 	case 1:
+		DrawText("Current Scene: Dijkstras Scene", 100, 740, 25, RED);
 		break;
 	case2:
+		// Some bug is happening to where it is not writing this text
+		DrawText("Current Scene: AStar Scene", 100, 740, 25, RED);
 		break;
 	}
 	//Clean up actors marked for destruction
@@ -65,7 +70,7 @@ void Engine::update(float deltaTime)
 
 	
 
-	// Switches between the scenes when the "W" key is pressed
+	// Switches between the scenes when the "Space" key is pressed
 	if (IsKeyPressed(KEY_SPACE))
 	{
 		m_currentSceneIndex++;

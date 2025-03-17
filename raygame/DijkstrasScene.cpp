@@ -10,34 +10,11 @@ void DijkstrasScene::start()
 	// We dont need to make the node map it is in the header file
 	m_nodeMap.cellSize = 32;
 	std::vector<std::string> asciiMap;
+	
 	/*asciiMap.push_back("000000000000000000000");
-	asciiMap.push_back("010111000000000111100");
-	asciiMap.push_back("010101111111111100110");
-	asciiMap.push_back("011100000010010000010");
-	asciiMap.push_back("010111111111110000110");
-	asciiMap.push_back("010000001000000000100");
-	asciiMap.push_back("011111111110000000100");
-	asciiMap.push_back("000010000000000000100");
-	asciiMap.push_back("000010000000000011100");
-	asciiMap.push_back("010111011100000010000");
-	asciiMap.push_back("010101110110000010000");
-	asciiMap.push_back("011100000011111111100");
-	asciiMap.push_back("010111111110000000100");
-	asciiMap.push_back("010000001000000001100");
-	asciiMap.push_back("011111111110000001000");
-	asciiMap.push_back("000010001010000001000");
-	asciiMap.push_back("000010001000000001000");
-	asciiMap.push_back("010111011100000001100");
-	asciiMap.push_back("010101110110000000110");
-	asciiMap.push_back("011100000010000000010");
-	asciiMap.push_back("010111111111111111010");
-	asciiMap.push_back("010000001000000001010");
-	asciiMap.push_back("011111111110000001110");
-	asciiMap.push_back("000000000000000000000");*/
+	asciiMap.push_back("011111111111111111110");
+	asciiMap.push_back("011111111111111111110");*/
 	asciiMap.push_back("000000000000000000000");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("011111111111111111110");
 	asciiMap.push_back("011111111111111111110");
 	asciiMap.push_back("011111111111111111110");
 	asciiMap.push_back("011111111111111111110");

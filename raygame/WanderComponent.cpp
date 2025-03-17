@@ -2,10 +2,12 @@
 
 WanderComponent::WanderComponent(Actor* owner)
 {
+	this->setDisabled();
 }
 
 WanderComponent::~WanderComponent()
 {
+	setDisabled();
 }
 
 void WanderComponent::Update(float deltaTime)

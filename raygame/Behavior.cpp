@@ -25,12 +25,12 @@ void Behavior::Update(float deltaTime)
 	
 	if (getEnabled() == true)
 	{
-		DrawRectangleLines(m_selection + 10, 10, 100, 40, RED);
-		/*DrawText("Seeking", 10, 10, 10, RED);
+		/*DrawRectangleLines(m_selection + 10, 10, 100, 40, RED);*/
+		DrawText("Seeking", 10, 10, 10, RED);
 		if (m_owner->getBehavior(0) == false)
 		{
 			DrawText("Seek disabled", 50, 50, 10, RED);
-		}*/
+		}
 		// Disables the current behavior
 		if (IsKeyPressed(KEY_S))
 		{

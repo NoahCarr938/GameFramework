@@ -61,13 +61,34 @@ void FiniteStateMachineComponent::handleSteeringBehaviors()
 		}
 		break;
 	case1:
+		if (IsKeyPressed(KEY_W))
+		{
+			state = 1;
+		}
+		else if (IsKeyPressed(KEY_S))
+		{
+			state = 2;
+		}
 		break;
 	case2:
+		if (IsKeyPressed(KEY_S))
+		{
+			state = 2;
+		}
+		else if (IsKeyPressed(KEY_A))
+		{
+			state = 3;
+		}
 		break;
 	case3:
+		if (IsKeyPressed(KEY_A))
+		{
+			state = 3;
+		}
+		else if (IsKeyPressed(KEY_W))
+		{
+			state = 0;
+		}
 		break;
 	}
-
-	
-	
 }
