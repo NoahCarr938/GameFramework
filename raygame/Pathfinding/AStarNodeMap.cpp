@@ -99,7 +99,8 @@ namespace AStarPathfinding
 				if (node == nullptr)
 				{
 					// draw a solid block in empty squares without a navigation node
-					DrawRectangle(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1, cellColor);
+					/*DrawRectangle(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1, cellColor);*/
+					DrawRectangle(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1, PURPLE);
 				}
 				else
 				{
@@ -107,7 +108,8 @@ namespace AStarPathfinding
 					for (int i = 0; i < node->connections.size(); i++)
 					{
 						Node* other = node->connections[i].target;
-						DrawLine(node->position.x, node->position.y, other->position.x, other->position.y, lineColor);
+						/*DrawLine(node->position.x, node->position.y, other->position.x, other->position.y, lineColor);*/
+						DrawLine(node->position.x, node->position.y, other->position.x, other->position.y, BROWN);
 					}
 				}
 			}

@@ -54,7 +54,7 @@ void Engine::update(float deltaTime)
 		DrawText("Current Scene: Steering Behavior Scene", 100, 740, 25, RED);
 		break;
 	case 1:
-		DrawText("Current Scene: Dijkstras Scene", 100, 740, 25, RED);
+		DrawText("Current Scene: Dijkstras Scene", 150, 740, 25, RED);
 		break;
 	case2:
 		// Some bug is happening to where it is not writing this text

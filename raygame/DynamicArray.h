@@ -63,7 +63,7 @@ public:
 	// No deleting except for our own array
 	void Clear();
 
-	bool Contains(const T& value);
+	bool Contains(const T& value) const;
 
 private:
 	T* m_array;
@@ -314,10 +314,12 @@ inline void DynamicArray<T>::Clear()
 }
 
 template<typename T>
-inline bool DynamicArray<T>::Contains(const T& value)
+inline bool DynamicArray<T>::Contains(const T& value) const
 {
 	for (int i = 0; i < m_length; i++)
 	{
-		return m_length != 0;
+		if (m_array[i] == value)
+			return true;
 	}
+	return false;
 }
