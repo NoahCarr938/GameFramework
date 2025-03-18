@@ -11,7 +11,7 @@ public:
 	FleeComponent() {};
 	FleeComponent(Actor* owner, Actor* target);
 	~FleeComponent();
-	virtual void Update(float deltaTime);
+	void update(float deltaTime);
 
 private:
 

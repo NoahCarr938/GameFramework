@@ -15,7 +15,7 @@ SeekComponent::~SeekComponent()
 	setDisabled();
 }
 
-void SeekComponent::Update(float deltaTime)
+void SeekComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{

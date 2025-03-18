@@ -11,7 +11,7 @@ public:
 	EvadeComponent() {};
 	EvadeComponent(Actor* owner, Actor* target);
 	~EvadeComponent();
-	virtual void Update(float deltaTime);
+	void update(float deltaTime);
 
 private:
 

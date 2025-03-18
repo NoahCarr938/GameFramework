@@ -11,14 +11,17 @@ public:
 	WanderComponent() {};
 	WanderComponent(Actor* owner);
 	~WanderComponent();
-	virtual void Update(float deltaTime);
+	// Update will be used to update the wander position and wanderComponentCircle
+	void update(float deltaTime);
 	// Move will be used to set the position, and calculate velocity and steering behavior.
 	void Move(MathLibrary::Vector2 target, float deltaTime);
-	// Update will be used to update the wander position and wanderComponentCircle
 
 private:
+	// How long the agent has spent wandering
 	int m_timeWandering;
+	// The distance the actor can wander
 	int m_wanderDistance;
+	// Bool to determine if the actor was wandering or not
 	bool m_wandering;
 	
 	MathLibrary::Vector2 m_wanderingPosition;

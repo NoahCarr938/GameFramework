@@ -11,7 +11,7 @@ public:
 	SeekComponent() {};
 	SeekComponent(Actor* owner, Actor* target);
 	~SeekComponent();
-	virtual void Update(float deltaTime);
+	void update(float deltaTime);
 
 private:
 

@@ -6,10 +6,11 @@ class Agent;
 class Behavior : public Component
 {
 public:
+	Behavior() {};
 	Behavior(Agent* owner);
 	~Behavior();
 
-	void Update(float deltaTime);
+	void update(float deltaTime);
 private:
 	Agent* m_owner;
 	int m_selection;

@@ -11,7 +11,7 @@ public:
 	PursueComponent() {};
 	PursueComponent(Actor* owner, Actor* target);
 	~PursueComponent();
-	virtual void Update(float deltaTime);
+	void update(float deltaTime);
 
 private:
 

@@ -1,6 +1,8 @@
 #include "DijkstrasPathfinding.h"
 #include <algorithm>
 #include <vector> 
+#include <chrono>
+#include <iostream>
 
 namespace DijkstrasPathfinding
 {
@@ -29,6 +31,9 @@ namespace DijkstrasPathfinding
 			singleNodePath.push_back(startNode);
 			return singleNodePath;
 		}
+
+		// Start variable for chrono time
+		auto start = std::chrono::high_resolution_clock::now();
 
 		//Initialize the starting node
 		startNode->gScore = 0;
@@ -110,6 +115,12 @@ namespace DijkstrasPathfinding
 			//Go to the previous node
 			currentNode = currentNode->previous;
 		}
+
+		// Getting the chrono time
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = end - start;
+		auto durationAsValue = std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count();
+		std::cout << durationAsValue << std::endl;
 
 		return path;
 	}

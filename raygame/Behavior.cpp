@@ -1,14 +1,11 @@
 #include "Behavior.h"
 #include "Agent.h"
 
-Behavior::Behavior(Agent* owner) : Component(owner, "BehaviorComponent")
+Behavior::Behavior(Agent* owner) : Component(owner, "Behavior")
 {
 	m_owner = owner;
 	m_behavior = 0;
-	for (int i = 0; i <= 6; i++)
-	{
-		m_owner->disableBehavior(m_behavior);
-	}
+	m_owner->disableAll();
 	m_owner->enableBehavior(m_behavior);
 	this->setEnabled();
 
@@ -20,17 +17,17 @@ Behavior::~Behavior()
 	setDisabled();
 }
 
-void Behavior::Update(float deltaTime)
+void Behavior::update(float deltaTime)
 {
 	
 	if (getEnabled() == true)
 	{
 		/*DrawRectangleLines(m_selection + 10, 10, 100, 40, RED);*/
-		DrawText("Seeking", 10, 10, 10, RED);
+		/*DrawText("Seeking", 10, 10, 10, RED);
 		if (m_owner->getBehavior(0) == false)
 		{
 			DrawText("Seek disabled", 50, 50, 10, RED);
-		}
+		}*/
 		// Disables the current behavior
 		if (IsKeyPressed(KEY_S))
 		{

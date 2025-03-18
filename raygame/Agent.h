@@ -12,6 +12,10 @@ public:
 	~Agent();
 	void enableBehavior(int behavior);
 	void disableBehavior(int behavior);
+	void enableAll();
+	void disableAll();
+	void enableGame();
+	void disableGame();
 	bool getBehavior(int behavior);
 private:
 };

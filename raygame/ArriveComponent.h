@@ -12,7 +12,7 @@ public:
 	ArriveComponent(Actor* owner, Actor* target);
 	ArriveComponent(Actor* owner, MathLibrary::Vector2 target);
 	~ArriveComponent();
-	virtual void Update(float deltaTime);
+	void update(float deltaTime);
 
 private:
 

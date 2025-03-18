@@ -1,4 +1,5 @@
 #include "AStarPathfinding.h"
+#include <iostream>
 #include <chrono>
 
 namespace AStarPathfinding {
@@ -27,6 +28,9 @@ namespace AStarPathfinding {
 			singleNodePath.push_back(startNode);
 			return singleNodePath;
 		}
+
+		// Start variable for chrono time
+		auto start = std::chrono::high_resolution_clock::now();
 
 		//Initialize the starting node
 		startNode->gScore = 0;
@@ -110,10 +114,6 @@ namespace AStarPathfinding {
 					}
 				}
 			}
-			/*auto end = std::chrono::high_resolution_clock::now();
-				auto duration = end - start;
-				auto durationAsValue = std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count();
-				return 0;*/
 		}
 
 		//Create path in reverse from endNode to startNode
@@ -127,6 +127,12 @@ namespace AStarPathfinding {
 			//Go to the previous node
 			currentNode = currentNode->previous;
 		}
+
+		// Getting the chrono time
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = end - start;
+		auto durationAsValue = std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count();
+		std::cout << durationAsValue << std::endl;
 
 		return path;
 	}

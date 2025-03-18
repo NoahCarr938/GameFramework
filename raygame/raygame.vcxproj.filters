@@ -113,7 +113,7 @@
     <ClCompile Include="AnimatedSpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MouseActor.cpp">
+    <ClCompile Include="MouseComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -223,7 +223,7 @@
     <ClInclude Include="FiniteStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MouseActor.h">
+    <ClInclude Include="MouseComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

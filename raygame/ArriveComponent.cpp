@@ -7,7 +7,7 @@ ArriveComponent::ArriveComponent(Actor* owner, Actor* target)
 	this->setDisabled();
 }
 
-ArriveComponent::ArriveComponent(Actor* owner, MathLibrary::Vector2 target)
+ArriveComponent::ArriveComponent(Actor* owner, MathLibrary::Vector2 target) : Component(owner, "ArriveComponent")
 {
 	m_target->getTransform()->setLocalPosition(target);
 	this->setDisabled();
@@ -18,7 +18,7 @@ ArriveComponent::~ArriveComponent()
 	setDisabled();
 }
 
-void ArriveComponent::Update(float deltaTime)
+void ArriveComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{
@@ -35,7 +35,7 @@ void ArriveComponent::Update(float deltaTime)
 		MathLibrary::Vector2 desiredVelocity;
 		DrawCircleLines(targetPosition.x, targetPosition.y, 500, RED);
 		if (distance < 500) {
-			desiredVelocity = ((targetVector * getOwner()->getTransform()->getMaxVelocity()) * (distance / 2000));
+			desiredVelocity = ((targetVector * getOwner()->getTransform()->getMaxVelocity()) * (distance / 1000));
 		}
 		else {
 			desiredVelocity = targetVector * getOwner()->getTransform()->getMaxVelocity();

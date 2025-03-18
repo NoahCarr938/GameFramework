@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "math.h"
 
-EvadeComponent::EvadeComponent(Actor* owner, Actor* target)
+EvadeComponent::EvadeComponent(Actor* owner, Actor* target) : Component(owner, "EvadeComponent")
 {
 	m_target = target;
 	this->setDisabled();
@@ -15,7 +15,7 @@ EvadeComponent::~EvadeComponent()
 	setDisabled();
 }
 
-void EvadeComponent::Update(float deltaTime)
+void EvadeComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{

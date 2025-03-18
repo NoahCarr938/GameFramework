@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "math.h"
 
-PursueComponent::PursueComponent(Actor* owner, Actor* target)
+PursueComponent::PursueComponent(Actor* owner, Actor* target) : Component(owner, "PursueComponent")
 {
 	m_target = target;
 	this->setDisabled();
@@ -15,7 +15,7 @@ PursueComponent::~PursueComponent()
 	setDisabled();
 }
 
-void PursueComponent::Update(float deltaTime)
+void PursueComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{

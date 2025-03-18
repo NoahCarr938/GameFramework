@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "math.h"
 
-FleeComponent::FleeComponent(Actor* owner, Actor* target) : Component(owner, "SeekComponent")
+FleeComponent::FleeComponent(Actor* owner, Actor* target) : Component(owner, "FleeComponent")
 {
 	m_target = target;
 	this->setDisabled();
@@ -15,7 +15,7 @@ FleeComponent::~FleeComponent()
 	setDisabled();
 }
 
-void FleeComponent::Update(float deltaTime)
+void FleeComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{
