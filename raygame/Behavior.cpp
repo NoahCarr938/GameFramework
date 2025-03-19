@@ -152,11 +152,11 @@ void Behavior::update(float deltaTime)
 		//	}
 		//}
 
-		switch (GetKeyPressed())
+		/*switch (GetKeyPressed())
 		{
 		case KeyboardKey(KEY_A):
 			m_selection = 0;
 			break;
-		}
+		}*/
 	}
 }

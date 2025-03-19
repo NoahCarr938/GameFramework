@@ -120,6 +120,7 @@ namespace DijkstrasPathfinding
 		auto end = std::chrono::high_resolution_clock::now();
 		auto duration = end - start;
 		auto durationAsValue = std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count();
+		std::cout << "Dijkstras Chrono Time" << std::endl;
 		std::cout << durationAsValue << std::endl;
 
 		return path;

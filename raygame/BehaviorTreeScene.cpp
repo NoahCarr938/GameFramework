@@ -11,3 +11,11 @@ void BehaviorTreeScene::start()
 	Player->getTransform()->setScale({ 50, 50 });
 	addActor(Player);
 }
+
+void BehaviorTreeScene::update(float deltaTime)
+{
+}
+
+void BehaviorTreeScene::end()
+{
+}
