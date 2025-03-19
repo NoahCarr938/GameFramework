@@ -6,31 +6,27 @@ void AStarScene::start()
 {
 	m_nodeMapAStar.cellSize = 32;
 	std::vector<std::string> asciiMap;
-	
-	/*asciiMap.push_back("000000000000000000000");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("011111111111111111110");*/
-	asciiMap.push_back("000000000000000000000");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("000001000000010000010");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("011111100000000000110");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("000000000001111110110");
-	asciiMap.push_back("011111111101111110110");
-	asciiMap.push_back("011100000000000110110");
-	asciiMap.push_back("011111111111111110110");
-	asciiMap.push_back("011101111111110110110");
-	asciiMap.push_back("011101111111110110110");
-	asciiMap.push_back("011101111111110110110");
-	asciiMap.push_back("011110111111101110110");
-	asciiMap.push_back("011111011111011110110");
-	asciiMap.push_back("011111100000111110110");
-	asciiMap.push_back("011111111111111110110");
-	asciiMap.push_back("011111111111111111110");
-	asciiMap.push_back("000000000000000000000");
+	asciiMap.push_back("0000000000000000000000");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111001111111110");
+	asciiMap.push_back("0111111111111111111110");
+	asciiMap.push_back("0111111111111111111110");
+	asciiMap.push_back("0111111111011111111110");
+	asciiMap.push_back("0111111110101111111110");
+	asciiMap.push_back("0111111101110111111110");
+	asciiMap.push_back("0111111011111011111110");
+	asciiMap.push_back("0111110111111101111110");
+	asciiMap.push_back("0111101111111110111110");
+	asciiMap.push_back("0111011111111111011110");
+	asciiMap.push_back("0000000000000000000000");
 	m_nodeMapAStar.Initialise(asciiMap);
 
 	// pathAgent is a pointer so we have to new it

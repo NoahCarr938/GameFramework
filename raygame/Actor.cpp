@@ -53,27 +53,28 @@ void Actor::update(float deltaTime)
         m_components[i]->update(deltaTime);
     }
 
-    ////Player Rotation
-    //if (IsKeyDown(KEY_RIGHT))
-    //    m_transform->rotate(rotationSpeed * -1 * (float)deltaTime);
-    //if (IsKeyDown(KEY_LEFT))
-    //    m_transform->rotate(rotationSpeed * 1 * (float)deltaTime);
+    //Player Rotation
+    if (IsKeyDown(KEY_RIGHT))
+        m_transform->rotate(rotationSpeed * -1 * (float)deltaTime);
+    if (IsKeyDown(KEY_LEFT))
+        m_transform->rotate(rotationSpeed * 1 * (float)deltaTime);
 
-    // //Player Movement
-    //MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
-    //if (IsKeyDown(KEY_W) && m_transform->getLocalPosition().y > 5)
-    //    movementInput.y -= 10;
-    //if (IsKeyDown(KEY_S) && m_transform->getLocalPosition().y > 5)
-    //    movementInput.y += 10;
-    //if (IsKeyDown(KEY_A) && m_transform->getLocalPosition().x > 5)
-    //    movementInput.x -= 10;
-    //if (IsKeyDown(KEY_D) && m_transform->getLocalPosition().x < GetScreenWidth() * .86)
-    //    movementInput.x += 10;
+    //Player Movement
+    MathLibrary::Vector2 movementInput = MathLibrary::Vector2();
 
-    //MathLibrary::Vector2 deltaMovement = movementInput.getNormalized() * speed * (float)deltaTime;
+    if (IsKeyDown(KEY_W) && m_transform->getLocalPosition().y > 5)
+        movementInput.y -= 10;
+    if (IsKeyDown(KEY_S) && m_transform->getLocalPosition().y > 5)
+        movementInput.y += 10;
+    if (IsKeyDown(KEY_A) && m_transform->getLocalPosition().x > 5)
+        movementInput.x -= 10;
+    if (IsKeyDown(KEY_D) && m_transform->getLocalPosition().x < GetScreenWidth() * .86)
+        movementInput.x += 10;
 
-    //if (deltaMovement.getMagnitude() != 0)
-    //    m_transform->setLocalPosition(m_transform->getLocalPosition() + deltaMovement);
+    MathLibrary::Vector2 deltaMovement = movementInput.getNormalized() * speed * (float)deltaTime;
+
+    if (deltaMovement.getMagnitude() != 0)
+        m_transform->setLocalPosition(m_transform->getLocalPosition() + deltaMovement);
 }
 
 void Actor::draw()

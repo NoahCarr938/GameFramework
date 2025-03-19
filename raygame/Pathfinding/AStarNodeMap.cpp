@@ -68,6 +68,21 @@ namespace AStarPathfinding
 						node->ConnectTo(nodeSouth, 1);
 						nodeSouth->ConnectTo(node, 1);
 					}
+
+					// see if there's a node north of us, checking for array index overruns again
+					/*Node* nodeNorth = x == 0 ? nullptr : GetNode(x, y + 1);
+					if (nodeWest)
+					{
+						node->ConnectTo(nodeNorth, 1); 
+						nodeNorth->ConnectTo(node, 1);
+					}*/
+
+					//Node* nodeEast = y == 0 ? nullptr : GetNode(x + 1, y);
+					//if (nodeEast)
+					//{
+					//	node->ConnectTo(nodeEast, 1); // TODO weights
+					//	nodeEast->ConnectTo(node, 1);
+					//}
 				}
 			}
 		}

@@ -152,6 +152,7 @@
     <ClCompile Include="AnimatedSpriteComponent.cpp" />
     <ClCompile Include="ArriveComponent.cpp" />
     <ClCompile Include="Behavior.cpp" />
+    <ClCompile Include="BehaviorTreeScene.cpp" />
     <ClCompile Include="BulletActor.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EvadeComponent.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
+    <ClCompile Include="FiniteStateMachineScene.cpp" />
     <ClCompile Include="FleeComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="AStarScene.cpp" />
@@ -187,6 +189,7 @@
     <ClInclude Include="AnimatedSpriteComponent.h" />
     <ClInclude Include="ArriveComponent.h" />
     <ClInclude Include="Behavior.h" />
+    <ClInclude Include="BehaviorTreeScene.h" />
     <ClInclude Include="BulletActor.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
@@ -196,6 +199,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EvadeComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />
+    <ClInclude Include="FiniteStateMachineScene.h" />
     <ClInclude Include="FleeComponent.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />

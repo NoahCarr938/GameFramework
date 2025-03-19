@@ -1,8 +1,9 @@
 #pragma once
 #include "Scene.h"
 
-class SteeringBehaviorScene : public Scene{
+class FiniteStateMachineScene : public Scene {
 public:
 	void start() override;
+
 private:
 };

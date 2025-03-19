@@ -97,3 +97,4 @@ bool Agent::getBehavior(int behavior)
 	}
 	return false;
 }
+

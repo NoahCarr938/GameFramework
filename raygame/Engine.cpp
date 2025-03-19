@@ -4,6 +4,8 @@
 #include "DijkstrasScene.h"
 #include "SteeringBehaviorScene.h"
 #include "AStarScene.h"
+#include "FiniteStateMachineScene.h"
+#include "BehaviorTreeScene.h"
 
 bool Engine::m_applicationShouldClose = false;
 Scene** Engine::m_scenes = new Scene*;
@@ -32,33 +34,44 @@ void Engine::start()
 	addScene(new SteeringBehaviorScene());
 	addScene(new DijkstrasScene());
 	addScene(new AStarScene());
+	addScene(new FiniteStateMachineScene());
+	addScene(new BehaviorTreeScene());
 
 	//Start the scene
 	/*m_currentSceneIndex = addScene(new SampleScene());*/
 	//m_currentSceneIndex = 0;
+	m_currentSceneIndex = 4;
+	m_scenes[m_currentSceneIndex]->start();
+	m_currentSceneIndex = 3;
+	m_scenes[m_currentSceneIndex]->start();
 	m_currentSceneIndex = 2;
 	m_scenes[m_currentSceneIndex]->start();
 	m_currentSceneIndex = 1;
 	m_scenes[m_currentSceneIndex]->start();
 	m_currentSceneIndex = 0;
 	m_scenes[m_currentSceneIndex]->start();
-
 }
 
 void Engine::update(float deltaTime)
 {
-	DrawText("Press Space To Switch Scenes", 150, 700, 25, RED);
+	DrawText("Press Space To Switch Scenes", 150, 700, 25, PURPLE);
 	switch (m_currentSceneIndex)
 	{
 	case 0:
-		DrawText("Current Scene: Steering Behavior Scene", 100, 740, 25, RED);
+		DrawText("Current Scene: Steering Behavior Scene", 100, 740, 25, PURPLE);
 		break;
 	case 1:
-		DrawText("Current Scene: Dijkstras Scene", 150, 740, 25, RED);
+		DrawText("Current Scene: Dijkstras Scene", 150, 740, 25, PURPLE);
 		break;
-	case2:
+	case 2:
 		// Some bug is happening to where it is not writing this text
-		DrawText("Current Scene: AStar Scene", 100, 740, 25, RED);
+		DrawText("Current Scene: AStar Scene", 150, 740, 25, PURPLE);
+		break;
+	case 3:
+		DrawText("Current Scene: Finite State Machine Scene", 100, 740, 25, PURPLE);
+		break;
+	case 4:
+		DrawText("Current Scene: Behavior Tree Scene", 120, 740, 25, PURPLE);
 		break;
 	}
 	//Clean up actors marked for destruction
@@ -68,14 +81,12 @@ void Engine::update(float deltaTime)
 	m_scenes[m_currentSceneIndex]->update(deltaTime);
 	m_scenes[m_currentSceneIndex]->updateUI(deltaTime);
 
-	
-
 	// Switches between the scenes when the "Space" key is pressed
 	if (IsKeyPressed(KEY_SPACE))
 	{
 		m_currentSceneIndex++;
 
-		if (m_currentSceneIndex >= 3)
+		if (m_currentSceneIndex >= 5)
 		{
 			m_currentSceneIndex = 0;
 		}
