@@ -32,9 +32,9 @@ void Behavior::update(float deltaTime)
 		DrawText("Press the left arrow key to enable behaviors", 50, 60, 25, PURPLE);*/
 		DrawText("Press the number 0 key for seek", 30, 20, 20, PURPLE);
 		DrawText("Press the number 1 key for flee", 30, 40, 20, PURPLE);
-		DrawText("Press the number 2 key for flee", 30, 60, 20, PURPLE);
-		DrawText("Press the number 3 key for flee", 30, 80, 20, PURPLE);
-		DrawText("Press the number 4 key for flee", 30, 100, 20, PURPLE);
+		DrawText("Press the number 2 key for pursue", 30, 60, 20, PURPLE);
+		DrawText("Press the number 3 key for evade", 30, 80, 20, PURPLE);
+		DrawText("Press the number 4 key for arrive", 30, 100, 20, PURPLE);
 		DrawText("Press the number 5 key for wander", 30, 120, 20, PURPLE);
 		DrawText("Press the number 6 to disable all behaviors", 30, 140, 20, PURPLE);
 
@@ -62,13 +62,13 @@ void Behavior::update(float deltaTime)
 			DrawText("Evade enabled", 50, 50, 10, PURPLE);
 			m_owner->enableBehavior(3);
 		}
-		// Arrive breaks
+		// Arrive is working
 		if (IsKeyPressed(KEY_KP_4))
 		{
 			DrawText("Arrive enabled", 50, 50, 10, PURPLE);
 			m_owner->enableBehavior(4);
 		}
-		// Wander breaks
+		// Wander is working
 		if (IsKeyPressed(KEY_KP_5))
 		{
 			DrawText("Wander enabled", 50, 50, 10, PURPLE);

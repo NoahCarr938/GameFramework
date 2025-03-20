@@ -1,5 +1,6 @@
 #include "WanderComponent.h"
 #include "math.h"
+#include "random"
 
 WanderComponent::WanderComponent(Actor* owner) : Component(owner, "WanderComponent")
 {
@@ -22,7 +23,51 @@ void WanderComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{
+		MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+		MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 
+		if (m_wandering == true)
+		{
+			// Getting a random x and y position for wandering
+			float wanderX = GetRandomValue(-10, 10);
+			float wanderY = GetRandomValue(-10, 10);
+
+			// Time to set the wandering position
+			m_wanderingPosition = { wanderX, wanderY };
+			m_wanderingPosition.normalize();
+			m_wanderingPosition = m_wanderingPosition * m_wanderDistance;
+			m_wanderingPosition = m_wanderingPosition + playerPosition;
+			m_wanderingPosition = m_wanderingPosition + (getOwner()->getTransform()->getForward() * m_wanderDistance);
+
+			// If statements to ensure that the wandering actor does not go off of screen
+			if (m_wanderingPosition.x >= GetScreenWidth())
+				m_wanderingPosition.x -= 100;
+			if (m_wanderingPosition.x <= GetScreenWidth())
+				m_wanderingPosition.x += 100;
+			if (m_wanderingPosition.y >= GetScreenHeight())
+				m_wanderingPosition.y -= 100;
+			if (m_wanderingPosition.y <= GetScreenHeight())
+				m_wanderingPosition.y += 100;
+
+			// Time to set the wander circle
+			m_wanderComponentCircle = playerPosition + (getOwner()->getTransform()->getForward() * m_wanderDistance);
+			
+			m_wandering = false;
+		}
+		if (m_wandering == false)
+		{
+			Move(m_wanderingPosition, deltaTime);
+			m_timeWandering++;
+			if (m_timeWandering >= 10000)
+			{
+				m_wandering = true;
+				m_timeWandering = 0;
+			}
+		}
+		// Drawing the wander circle
+		DrawCircleLines(m_wanderComponentCircle.x, m_wanderComponentCircle.y, m_wanderDistance, PURPLE);
+		// Display where the actor is wandering to
+		DrawLine(m_wanderingPosition.x, m_wanderingPosition.y, playerPosition.x, playerPosition.y, PURPLE);
 	}
 }
 

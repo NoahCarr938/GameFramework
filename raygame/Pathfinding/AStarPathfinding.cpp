@@ -78,9 +78,11 @@ namespace AStarPathfinding {
 					e.target->gScore = currentNode->gScore + e.cost;
 
 					// Calculating the h score
-					e.target->hScore = sqrt(((endNode->position.x - currentNode->position.x) * (endNode->position.x - currentNode->position.x)) + ((endNode->position.y - currentNode->position.y) * (endNode->position.y - currentNode->position.y)));
+					float hValue = sqrt(((endNode->position.x - currentNode->position.x) * (endNode->position.x - currentNode->position.x)) + ((endNode->position.y - currentNode->position.y) * (endNode->position.y - currentNode->position.y)));
 
-					e.target->fScore = e.target->gScore + e.target->fScore;
+					e.target->hScore = hValue / 32;
+
+					e.target->fScore = e.target->gScore + e.target->hScore;
 
 					//Set the target node's previous to currentNode
 					e.target->previous = currentNode;
@@ -88,7 +90,7 @@ namespace AStarPathfinding {
 					//to the list to keep it sorted
 					auto insertionPos = openList.end();
 					for (auto i = openList.begin(); i != openList.end(); i++) {
-						if (e.target->gScore < (*i)->gScore) {
+						if (e.target->fScore < (*i)->fScore) {
 							insertionPos = i;
 							break;
 						}
@@ -107,7 +109,7 @@ namespace AStarPathfinding {
 						e.target->hScore = sqrt(((endNode->position.x - currentNode->position.x) * (endNode->position.x - currentNode->position.x)) + ((endNode->position.y - currentNode->position.y) * (endNode->position.y - currentNode->position.y)));
 
 						// Adding the g and h score to get the f score
-						e.target->fScore = e.target->gScore + e.target->fScore;
+						e.target->fScore = e.target->gScore + e.target->hScore;
 
 						//Set the target node's previous to currentNode
 						e.target->previous = currentNode;

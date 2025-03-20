@@ -20,6 +20,7 @@ private:
 	// How long the agent has spent wandering
 	int m_timeWandering;
 	// The distance the actor can wander
+	// Will be used as a scalar
 	int m_wanderDistance;
 	// Bool to determine if the actor was wandering or not
 	bool m_wandering;

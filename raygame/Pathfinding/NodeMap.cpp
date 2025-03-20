@@ -57,6 +57,21 @@ namespace DijkstrasPathfinding
 						node->ConnectTo(nodeSouth, 1);
 						nodeSouth->ConnectTo(node, 1);
 					}
+
+					// Code below is for diagonal movement
+					//Node* nodeSouthEast = x + y == 0 ? nullptr : GetNode(x + 1, y - 1);
+					//if (nodeWest)
+					//{
+					//	node->ConnectTo(nodeSouthEast, 1.1);
+					//	nodeSouthEast->ConnectTo(node, 1.1);
+					//}
+
+					//Node* nodeSouthWest = x + y == 0 ? nullptr : GetNode(x - 1, y - 1);
+					//if (nodeSouthWest)
+					//{
+					//	node->ConnectTo(nodeSouthWest, 1.1); // TODO weights
+					//	nodeSouthWest->ConnectTo(node, 1.1);
+					//}
 				}
 			}
 		}

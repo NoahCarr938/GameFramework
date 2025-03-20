@@ -69,19 +69,19 @@ namespace AStarPathfinding
 						nodeSouth->ConnectTo(node, 1);
 					}
 
-					// see if there's a node north of us, checking for array index overruns again
-					//Node* nodeNorth = x == 0 ? nullptr : GetNode(x - 1, y - 1);
+					// Code below is for diagonal movement
+					//Node* nodeSouthEast = x + y == 0 ? nullptr : GetNode(x + 1, y - 1);
 					//if (nodeWest)
 					//{
-					//	node->ConnectTo(nodeNorth, 1); 
-					//	nodeNorth->ConnectTo(node, 1);
+					//	node->ConnectTo(nodeSouthEast, 1.1); 
+					//	nodeSouthEast->ConnectTo(node, 1.1);
 					//}
 
-					//Node* nodeSouthWest = x == 0 && y == 0 ? nullptr : GetNode(x - 1, y - 1);
+					//Node* nodeSouthWest = x + y == 0 ? nullptr : GetNode(x - 1, y - 1);
 					//if (nodeSouthWest)
 					//{
-					//	node->ConnectTo(nodeSouthWest, 1); // TODO weights
-					//	nodeSouthWest->ConnectTo(node, 1);
+					//	node->ConnectTo(nodeSouthWest, 1.1); // TODO weights
+					//	nodeSouthWest->ConnectTo(node, 1.1);
 					//}
 				}
 			}

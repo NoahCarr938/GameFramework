@@ -123,18 +123,10 @@ private:
 template<typename T>
 inline T* Actor::getComponent(T* component)
 {
-    Component ptr = dynamic_cast<Component*>(component);
-    if (ptr = nullptr)
-        return nullptr;
-    else
+    for (int i = 0; i < m_components.Length(); i++)
     {
-        for (int i = 0; i < m_components.Length(); i++)
-        {
-            if (m_components = component)
-            {
-                return m_components[i];
-            }
-        }
+        if (i == component)
+            return m_components[i];
     }
 }
 

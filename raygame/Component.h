@@ -1,6 +1,8 @@
 #pragma once
 
+// Forward declaring class actor and agent
 class Actor;
+class Agent;
 
 class Component
 {

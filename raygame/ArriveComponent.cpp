@@ -1,7 +1,7 @@
 #include "ArriveComponent.h"
 #include "math.h"
 
-ArriveComponent::ArriveComponent(Actor* owner, Actor* target)
+ArriveComponent::ArriveComponent(Actor* owner, Actor* target) : Component(owner, "ArriveComponent")
 {
 	m_target = target;
 	this->setDisabled();
