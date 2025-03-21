@@ -1,19 +1,27 @@
 #include "BehaviorTreeScene.h"
+#include "BehaviorTree.h"
+#include "BehaviorTreeAgent.h"
 #include "Agent.h"
 #include "Actor.h"
 #include "Component.h"
 #include "SpriteComponent.h"
+#include "MouseComponent.h"
+#include "SeekComponent.h"
+#include "FleeComponent.h"
+#include "PursueComponent.h"
+#include "EvadeComponent.h"
+#include "ArriveComponent.h"
+#include "WanderComponent.h"
+
 
 void BehaviorTreeScene::start()
 {
-	Agent* Player = new Agent(150, 150, "Player");
-	Player->addComponent(new SpriteComponent(Player, "Images/player.png"));
-	Player->getTransform()->setScale({ 50, 50 });
-	addActor(Player);
+	BehaviorTreeAgent agent(200, 200);
 }
 
 void BehaviorTreeScene::update(float deltaTime)
 {
+
 }
 
 void BehaviorTreeScene::end()

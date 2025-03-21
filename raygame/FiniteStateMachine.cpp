@@ -25,7 +25,7 @@ FiniteStateMachineComponent::~FiniteStateMachineComponent()
 
 void FiniteStateMachineComponent::HandleStates()
 {
-	//Handles changing the states
+	// Switch statement for all of the states
 	switch (m_state)
 	{
 	case STATE_WANDERING:
@@ -55,24 +55,24 @@ void FiniteStateMachineComponent::HandleStates()
 
 void FiniteStateMachineComponent::SeekBehavior()
 {
-	//Puts the positions and the owner's velocity into variables for ease of use
-	MathLibrary::Vector2 ownerPosition = getOwner()->getTransform()->getLocalPosition();
-	MathLibrary::Vector2 ownerVelocity = getOwner()->getTransform()->getVelocity();
+	// Making the positions and velocity into variables
+	MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+	MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 	MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 
-	//Actual distance between owner and target
-	MathLibrary::Vector2 distanceVector = targetPosition - ownerPosition;
-	float distance = distanceVector.getMagnitude();
+	//Distance between the player and the target
+	MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+	float distance = targetVector.getMagnitude();
 
-	//Distance from owner to the circle used to wander
-	distanceVector = targetPosition - (ownerPosition + (getOwner()->getTransform()->getForward() * 200));
-	float detectionDistance = distanceVector.getMagnitude();
+	//Distance from the player to the wander circle
+	targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
+	float detectionDistance = targetVector.getMagnitude();
 
-	//Show current state
+	//Displays the current state
 	DrawText("Agent status: Seek", 100, 40, 40, YELLOW);
 
-	//Tags and changes the state when within a small distance
-	if (distance < 40 && m_switchTimer <= 0)
+	// Changes the state when within a distance of 25
+	if (distance < 25 && m_switchTimer <= 0)
 	{
 		m_collided = true;
 		m_isSeeking = !(m_isSeeking);
@@ -86,8 +86,8 @@ void FiniteStateMachineComponent::SeekBehavior()
 		m_switchTimer--;
 	}
 
-	//Starts to speed up after chasing for a while (Swaps to SeekerSeekAndPursue)
-	if (m_timeSeeking >= 25000)
+	//Speeds up after chasing the target for a set amount of time. Swaps to pursue.
+	if (m_timeSeeking >= 20000)
 	{
 		m_state = STATE_PURSUE;
 	}
@@ -99,24 +99,24 @@ void FiniteStateMachineComponent::SeekBehavior()
 
 void FiniteStateMachineComponent::PursueBehavior()
 {
-	//Puts the positions and the owner's velocity into variables for ease of use
-	MathLibrary::Vector2 ownerPosition = getOwner()->getTransform()->getLocalPosition();
-	MathLibrary::Vector2 ownerVelocity = getOwner()->getTransform()->getVelocity();
+	// Making the positions and velocity into variables
+	MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+	MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 	MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 
-	//Actual distance between owner and target
-	MathLibrary::Vector2 distanceVector = targetPosition - ownerPosition;
-	float distance = distanceVector.getMagnitude();
+	//Distance between the player and the target
+	MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+	float distance = targetVector.getMagnitude();
 
-	//Distance from owner to the circle used to wander
-	distanceVector = targetPosition - (ownerPosition + (getOwner()->getTransform()->getForward() * 200));
-	float detectionDistance = distanceVector.getMagnitude();
+	//Distance from the player to the wander circle
+	targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
+	float detectionDistance = targetVector.getMagnitude();
 
-	//Show current state
+	//Displays the current state
 	DrawText("Agent status: Seek and Pursue", 100, 40, 40, YELLOW);
 
-	//Tags and changes the state when within a small distance
-	if (distance < 40 && m_switchTimer <= 0)
+	// Changes the state when within a distance of 25
+	if (distance < 25 && m_switchTimer <= 0)
 	{
 		m_collided = true;
 		m_isSeeking = !(m_isSeeking);
@@ -138,24 +138,24 @@ void FiniteStateMachineComponent::PursueBehavior()
 
 void FiniteStateMachineComponent::FleeBehavior()
 {
-	//Puts the positions and the owner's velocity into variables for ease of use
-	MathLibrary::Vector2 ownerPosition = getOwner()->getTransform()->getLocalPosition();
-	MathLibrary::Vector2 ownerVelocity = getOwner()->getTransform()->getVelocity();
+	// Making the positions and velocity into variables
+	MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+	MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 	MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 
-	//Actual distance between owner and target
-	MathLibrary::Vector2 distanceVector = targetPosition - ownerPosition;
-	float distance = distanceVector.getMagnitude();
+	//Distance between the player and the target
+	MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+	float distance = targetVector.getMagnitude();
 
-	//Distance from owner to the circle used to wander
-	distanceVector = targetPosition - (ownerPosition + (getOwner()->getTransform()->getForward() * 200));
-	float detectionDistance = distanceVector.getMagnitude();
+	//Distance from the player to the wander circle
+	targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
+	float detectionDistance = targetVector.getMagnitude();
 
-	//Show current state
+	//Displays the current state
 	DrawText("Agent status: Flee", 100, 40, 40, YELLOW);
 
-	//Tags and changes the state when within a small distance
-	if (distance < 40 && m_switchTimer <= 0)
+	// Changes the state when within a distance of 25
+	if (distance < 25 && m_switchTimer <= 0)
 	{
 		m_collided = true;
 		m_isSeeking = !(m_isSeeking);
@@ -176,24 +176,24 @@ void FiniteStateMachineComponent::FleeBehavior()
 
 void FiniteStateMachineComponent::EvadeBehavior()
 {
-	//Puts the positions and the owner's velocity into variables for ease of use
-	MathLibrary::Vector2 ownerPosition = getOwner()->getTransform()->getLocalPosition();
-	MathLibrary::Vector2 ownerVelocity = getOwner()->getTransform()->getVelocity();
+	// Making the positions and velocity into variables
+	MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+	MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 	MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 
-	//Actual distance between owner and target
-	MathLibrary::Vector2 distanceVector = targetPosition - ownerPosition;
-	float distance = distanceVector.getMagnitude();
+	//Distance between the player and the target
+	MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+	float distance = targetVector.getMagnitude();
 
-	//Distance from owner to the circle used to wander
-	distanceVector = targetPosition - (ownerPosition + (getOwner()->getTransform()->getForward() * 200));
-	float detectionDistance = distanceVector.getMagnitude();
+	//Distance from the player to the wander circle
+	targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
+	float detectionDistance = targetVector.getMagnitude();
 
-	//Show current state
+	//Displays the current state
 	DrawText("Agent status: Flee and Evade", 100, 40, 40, YELLOW);
 
-	//Tags and changes the state when within a small distance
-	if (distance < 40 && m_switchTimer <= 0)
+	// Changes the state when within a distance of 25
+	if (distance < 25 && m_switchTimer <= 0)
 	{
 		m_collided = true;
 		m_isSeeking= !(m_isSeeking);
@@ -207,7 +207,7 @@ void FiniteStateMachineComponent::EvadeBehavior()
 		m_switchTimer--;
 	}
 
-	//Starts to ease up on running away after a while (Swaps to RunnerFlee)
+	//Starts to slow down running after a moment. State changes to flee
 	if (m_timeFleeing >= 25000)
 	{
 		m_state = STATE_FLEE;
@@ -221,10 +221,9 @@ void FiniteStateMachineComponent::EvadeBehavior()
 
 void FiniteStateMachineComponent::WanderBehavior()
 {
-	//A check so that the state properly changes if the user uses the 0 key to activate/deactivate tag
+	// Checks to make sure the state changes if the 0 key is pressed
 	if (m_gameActive == true)
 	{
-		//Seeker or Runner
 		if (m_isSeeking == true)
 		{
 			m_state = STATE_SEEK;
@@ -235,31 +234,30 @@ void FiniteStateMachineComponent::WanderBehavior()
 		}
 	}
 
-	//Puts the positions and the owner's velocity into variables for ease of use
-	MathLibrary::Vector2 ownerPosition = getOwner()->getTransform()->getLocalPosition();
-	MathLibrary::Vector2 ownerVelocity = getOwner()->getTransform()->getVelocity();
+	// Making the positions and velocity into variables
+	MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+	MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 	MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 
-	//Actual distance between owner and target
-	MathLibrary::Vector2 distanceVector = targetPosition - ownerPosition;
-	float distance = distanceVector.getMagnitude();
+	//Distance between the player and the target
+	MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+	float distance = targetVector.getMagnitude();
 
-	//Distance from owner to the circle used to wander
-	distanceVector = targetPosition - (ownerPosition + (getOwner()->getTransform()->getForward() * 200));
-	float detectionDistance = distanceVector.getMagnitude();
+	//Distance from the player to the wander circle
+	targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
+	float detectionDistance = targetVector.getMagnitude();
 
-	//Show detectection range
-	MathLibrary::Vector2 wanderCircle = ownerPosition + (getOwner()->getTransform()->getForward() * 200);
+	//The detection range 
+	MathLibrary::Vector2 wanderCircle = playerPosition + (getOwner()->getTransform()->getForward() * 200);
 	DrawCircleLines(wanderCircle.x, wanderCircle.y, 200, BLUE);
-	//Show current state
+	//Displays the current state
 	DrawText("Agent status: Wander", 100, 40, 40, YELLOW);
 
-	//Agent spots player and starts tag
+	//If the agent spots the player
 	if (detectionDistance < 200)
 	{
 		m_gameActive = true;
 
-		//Seeker or Runner
 		if (m_isSeeking == true)
 		{
 			m_state = STATE_SEEK;
@@ -270,7 +268,7 @@ void FiniteStateMachineComponent::WanderBehavior()
 		}
 	}
 
-	//Start wandering
+	//Start to wander
 	m_owner->disableAll();
 	m_owner->enableBehavior(2);
 }
@@ -279,22 +277,22 @@ void FiniteStateMachineComponent::update(float deltaTime)
 {
 	if (getEnabled() == true)
 	{
-		//Puts the positions and the owner's velocity into variables for ease of use
-		MathLibrary::Vector2 ownerPosition = getOwner()->getTransform()->getLocalPosition();
-		MathLibrary::Vector2 ownerVelocity = getOwner()->getTransform()->getVelocity();
+		// Making the positions and velocity into variables
+		MathLibrary::Vector2 playerPosition = getOwner()->getTransform()->getLocalPosition();
+		MathLibrary::Vector2 playerVelocity = getOwner()->getTransform()->getVelocity();
 		MathLibrary::Vector2 targetPosition = m_target->getTransform()->getLocalPosition();
 
-		//Actual distance between owner and target
-		MathLibrary::Vector2 distanceVector = targetPosition - ownerPosition;
-		float distance = distanceVector.getMagnitude();
+		//Distance between the player and the target
+		MathLibrary::Vector2 targetVector = targetPosition - playerPosition;
+		float distance = targetVector.getMagnitude();
 
-		//Distance from owner to the circle used to wander
-		distanceVector = targetPosition - (ownerPosition + (getOwner()->getTransform()->getForward() * 200));
-		float detectionDistance = distanceVector.getMagnitude();
+		//Distance from the player to the wander circle
+		targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
+		float detectionDistance = targetVector.getMagnitude();
 
-		//Tell user that you can swap tag active
-		DrawText("Press the 0 key to swap active or inactive", 100, 12, 20, YELLOW);
-		//Swap tag to be active or inactive outside of normal function
+		//Draw text to show that you can swap active and inactive
+		DrawText("Press the 0 key to swap active or inactive", 100, 12, 20, PURPLE);
+		//If the 0 key is pressed then swap active and inactive
 		if (IsKeyPressed(KEY_KP_0))
 		{
 			m_gameActive = !(m_gameActive);
@@ -303,6 +301,7 @@ void FiniteStateMachineComponent::update(float deltaTime)
 			m_timeSeeking = 0;
 			m_timeFleeing = 0;
 
+			// If the game is not active then the current state is set to wandering
 			if (m_gameActive == false)
 			{
 				m_state = STATE_WANDERING;
@@ -318,7 +317,7 @@ void FiniteStateMachineComponent::update(float deltaTime)
 		if (m_gameActive == true)
 		{
 			//Counter until Game is over
-			DrawText(TextFormat("GameTimer: %i", m_gameTimer), 100, 80, 40, YELLOW);
+			DrawText(TextFormat("GameTimer: %i", m_gameTimer), 100, 80, 40, PURPLE);
 			if (distance > 200)
 			{
 				m_gameTimer++;
@@ -329,20 +328,17 @@ void FiniteStateMachineComponent::update(float deltaTime)
 				}
 			}
 
-			//Shows how far you need to be in order for the gametimer to increment
-			DrawCircleLines(ownerPosition.x, ownerPosition.y, 200, BLUE);
-
 			//Show when you can tag
 			if (m_switchTimer <= 0)
 			{
-				DrawCircle(ownerPosition.x, ownerPosition.y, 40, GREEN);
+				DrawCircle(playerPosition.x, playerPosition.y, 40, PURPLE);
 			}
 			else
 			{
-				DrawCircle(ownerPosition.x, ownerPosition.y, 40, RED);
+				DrawCircle(playerPosition.x, playerPosition.y, 40, PURPLE);
 			}
 
-			//Will change the state to wander when tag is over
+			//Changes the state to wander whenever tag ends.
 			if (m_gameActive == false)
 			{
 				m_state = STATE_WANDERING;

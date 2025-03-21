@@ -152,7 +152,9 @@
     <ClCompile Include="AnimatedSpriteComponent.cpp" />
     <ClCompile Include="ArriveComponent.cpp" />
     <ClCompile Include="Behavior.cpp" />
+    <ClCompile Include="Behaviors.cpp" />
     <ClCompile Include="BehaviorTree.cpp" />
+    <ClCompile Include="BehaviorTreeAgent.cpp" />
     <ClCompile Include="BehaviorTreeScene.cpp" />
     <ClCompile Include="BulletActor.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
@@ -195,6 +197,7 @@
     <ClInclude Include="Behavior.h" />
     <ClInclude Include="Behaviors.h" />
     <ClInclude Include="BehaviorTree.h" />
+    <ClInclude Include="BehaviorTreeAgent.h" />
     <ClInclude Include="BehaviorTreeScene.h" />
     <ClInclude Include="BulletActor.h" />
     <ClInclude Include="CircleCollider.h" />
