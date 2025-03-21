@@ -16,14 +16,32 @@
 
 void BehaviorTreeScene::start()
 {
-	BehaviorTreeAgent agent(200, 200);
+	Actor* mouse = new Actor(150, 150, "Mouse");
+	mouse->addComponent(new SpriteComponent(mouse, "images/player.png"));
+	mouse->addComponent(new MouseComponent(mouse));
+	mouse->getTransform()->setScale({ 50, 50 });
+
+	Agent* enemy = new Agent(50, 50, "Enemy");
+	enemy->getTransform()->setMaxVelovity(500);
+	enemy->addComponent(new SeekComponent(enemy, mouse));
+	enemy->addComponent(new FleeComponent(enemy, mouse));
+	enemy->addComponent(new PursueComponent(enemy, mouse));
+	enemy->addComponent(new EvadeComponent(enemy, mouse));
+	enemy->addComponent(new ArriveComponent(enemy, mouse));
+	enemy->addComponent(new WanderComponent(enemy));
+	enemy->addComponent(new Behavior(enemy));
+	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
+	enemy->getTransform()->setScale({ 50, 50 });
+
+	addActor(mouse);
+	addActor(enemy);
 }
 
-void BehaviorTreeScene::update(float deltaTime)
-{
-
-}
-
-void BehaviorTreeScene::end()
-{
-}
+//void BehaviorTreeScene::update(float deltaTime)
+//{
+//	
+//}
+//
+//void BehaviorTreeScene::end()
+//{
+//}

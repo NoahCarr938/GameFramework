@@ -1,23 +1,33 @@
 #pragma once
 #include "raymath.h"
 #include <list>
+#include "Actor.h"
+#include "Behavior.h"
 
 class BehaviorTree;
-class Actor;
 
-class BehaviorTreeAgent
+class BehaviorTreeAgent : public Actor
 {
 public:
-	BehaviorTreeAgent(float x, float y);
+	BehaviorTreeAgent();
+	BehaviorTreeAgent(float x, float y, const char* name);
 	virtual ~BehaviorTreeAgent();
 
 	// Update the agent and its behaviours
 	virtual void update(float deltaTime);
 
 	// Draw the agent
-	virtual void Draw();
+	//virtual void Draw();
 
 	void SetAttack(bool state) { m_attack = state; }
+
+	void btEnableBehavior(int behavior);
+	void btDisableBehavior(int behavior);
+	void btEnableAll();
+	void btDisableAll();
+	void btEnableGame();
+	void btDisableGame();
+	bool btGetBehavior(int behavior);
 
 protected:
 	BehaviorTree* m_behaviorTree;
