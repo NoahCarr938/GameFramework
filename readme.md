@@ -1,4 +1,15 @@
 # raygame - sample project
+NOTICE: As of 3/21/25 the Behaviour tree framework is there but the scene is not showcasing it working.
+Welcome to this showcase of various AI steering behaviours, AStar and Dijkstras's pathfinding, a finite state machine, and a behaviour tree.
+
+Controls:
+Use the space key to swap scenes.
+Use your mouse for the actor or to click where the algorithims go to.
+When the scene says to press a number it means the numbers on the left of your keyboard.
+
+Download:
+Link to Github release: https://github.com/NoahCarr938/GameFramework/releases/tag/v1.0.1
+Download the zip file and run the raygame.exe file.
 
 This is a sample C++ project setup with [raylib][raylib] for Visual
 Studio 2019. Raylib is a simple game programming framework that is designed to
