@@ -12,36 +12,30 @@
 #include "EvadeComponent.h"
 #include "ArriveComponent.h"
 #include "WanderComponent.h"
+#include "MovementComponent.h"
 
 
 void BehaviorTreeScene::start()
 {
-	Actor* mouse = new Actor(150, 150, "Mouse");
-	mouse->addComponent(new SpriteComponent(mouse, "images/player.png"));
-	mouse->addComponent(new MouseComponent(mouse));
-	mouse->getTransform()->setScale({ 50, 50 });
+	Actor* player = new Actor(150, 100, "Player");
+	player->addComponent(new SpriteComponent(player, "Images/player.png"));
+	player->addComponent(new MouseComponent(player));
+	player->getTransform()->setScale({ 50, 50 });
 
-	Agent* enemy = new Agent(50, 50, "Enemy");
-	enemy->getTransform()->setMaxVelovity(500);
-	enemy->addComponent(new SeekComponent(enemy, mouse));
-	enemy->addComponent(new FleeComponent(enemy, mouse));
-	enemy->addComponent(new PursueComponent(enemy, mouse));
-	enemy->addComponent(new EvadeComponent(enemy, mouse));
-	enemy->addComponent(new ArriveComponent(enemy, mouse));
-	enemy->addComponent(new WanderComponent(enemy));
-	enemy->addComponent(new Behavior(enemy));
+	BehaviorTreeAgent* enemy = new BehaviorTreeAgent();
 	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
-	enemy->getTransform()->setScale({ 50, 50 });
+	enemy->getTransform()->setScale({ 50 , 50 });
 
-	addActor(mouse);
+	addActor(player);
 	addActor(enemy);
 }
 
-//void BehaviorTreeScene::update(float deltaTime)
-//{
-//	
-//}
-//
-//void BehaviorTreeScene::end()
-//{
-//}
+void BehaviorTreeScene::update(float deltaTime)
+{
+	Scene::update(deltaTime);
+}
+
+void BehaviorTreeScene::end()
+{
+	Scene::end();
+}

@@ -200,7 +200,7 @@ void FiniteStateMachineComponent::EvadeBehavior()
 	}
 
 	//Starts to slow down running after a moment. State changes to flee
-	if (m_timeFleeing >= 25000)
+	if (m_timeFleeing >= 20000)
 	{
 		m_state = STATE_FLEE;
 	}
@@ -277,24 +277,6 @@ void FiniteStateMachineComponent::update(float deltaTime)
 		targetVector = targetPosition - (playerPosition + (getOwner()->getTransform()->getForward() * 200));
 		float detectionDistance = targetVector.getMagnitude();
 
-		//Draw text to show that you can swap active and inactive
-		DrawText("Press the 0 key to swap active or inactive", 60, 12, 20, PURPLE);
-		//If the 0 key is pressed then swap active and inactive
-		if (IsKeyPressed(KEY_KP_0))
-		{
-			m_gameActive = !(m_gameActive);
-			m_gameTimer = 0;
-			m_switchTimer = 0;
-			m_timeSeeking = 0;
-			m_timeFleeing = 0;
-
-			// If the game is not active then the current state is set to wandering
-			if (m_gameActive == false)
-			{
-				m_state = STATE_WANDERING;
-			}
-		}
-
 		//Contains the finite state machine
 		HandleStates();
 
@@ -313,22 +295,6 @@ void FiniteStateMachineComponent::update(float deltaTime)
 					m_gameTimer = 0;
 					m_gameActive = false;
 				}
-			}
-
-			//Show when you can tag
-			if (m_switchTimer <= 0)
-			{
-				DrawCircle(playerPosition.x, playerPosition.y, 40, PURPLE);
-			}
-			else
-			{
-				DrawCircle(playerPosition.x, playerPosition.y, 40, PURPLE);
-			}
-
-			//Changes the state to wander whenever tag ends.
-			if (m_gameActive == false)
-			{
-				m_state = STATE_WANDERING;
 			}
 		}
 	}

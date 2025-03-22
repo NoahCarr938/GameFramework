@@ -3,6 +3,7 @@
 // Forward declaring class actor and agent
 class Actor;
 class Agent;
+class BehaviorTreeAgent;
 
 class Component
 {
@@ -56,7 +57,7 @@ public:
 
 	virtual bool getEnabled() { return m_enabled; }
 
-private:
+protected:
 	const char* m_name;
 	Actor* m_owner;
 	bool m_enabled;

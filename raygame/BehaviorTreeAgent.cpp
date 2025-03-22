@@ -17,20 +17,15 @@ BehaviorTreeAgent::BehaviorTreeAgent(float x, float y, const char* name = "Agent
 	m_name = name;
 	m_transform->setLocalPosition({ x, y });
 	m_maxSpeed = 100;
-	//m_position = { x, y };
 
 	// looks hideous, but basically builds the tree without using temp variables
 	m_behaviorTree =
 		(new Selector())->add(
-		(new Sequence())->add(
-		new MouseCloseCondition())->add(
-		new AttackAction()))->add(
-		(new Sequence())->add(
-		new StopAttackAction())->add(
-		new SeekAction()));
-			
-		
-
+		(new Sequence())->add(new MouseCloseCondition())->add(new ArriveAction()))->add((
+		new Selector())->add(
+		(new Sequence())->add(new StopAttackAction())->add(new TargetIsNotNear())->add(new SeekAction())->add(
+		(new Sequence())->add(new TargetIsNear())->add((new EvadeTarget())))));
+	getTransform()->setLocalPosition({ 150, 150 });
 }
 
 BehaviorTreeAgent::~BehaviorTreeAgent()
@@ -45,6 +40,18 @@ BehaviorTreeAgent::~BehaviorTreeAgent()
 // Update the agent and its behaviours
 void BehaviorTreeAgent::update(float deltaTime)
 {
+
+	/*Actor::update(deltaTime);
+	if (distanceToTarget() > 50)
+	{
+		m_pursue->enable();
+		m_flee->disable();
+	}
+	else
+	{
+		m_pursue->disable();
+		m_flee->enable();
+	}*/
 
 	if (m_behaviorTree != nullptr)
 		m_behaviorTree->tick(this, deltaTime);

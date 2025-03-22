@@ -58,7 +58,7 @@ public:
     /// <returns>A pointer to the component if a match was found.
     /// Returns nullptr if a match wasn't found.</returns>
     template <typename T> 
-    T* getComponent(T* component);
+    T* getComponent();
     /*Component* getComponent(const char* componentName);*/
 
     template <typename T>
@@ -121,13 +121,16 @@ private:
 };
 
 template<typename T>
-inline T* Actor::getComponent(T* component)
+inline T* Actor::getComponent()
 {
-    for (int i = 0; i < m_components.Length(); i++)
+    for (Component* element : m_components)
     {
-        if (i == component)
-            return m_components[i];
+        if (dynamic_cast<T*>(element) != nullptr)
+        {
+            return dynamic_cast<T*>(element);
+        }
     }
+    return nullptr;
 }
 
 template<typename T>

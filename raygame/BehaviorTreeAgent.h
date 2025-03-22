@@ -5,6 +5,10 @@
 #include "Behavior.h"
 
 class BehaviorTree;
+class SeekComponent;
+class FleeComponent;
+class EvadeComponent;
+class ArriveComponent;
 
 class BehaviorTreeAgent : public Actor
 {
@@ -13,14 +17,14 @@ public:
 	BehaviorTreeAgent(float x, float y, const char* name);
 	virtual ~BehaviorTreeAgent();
 
-	// Update the agent and its behaviours
+	// Update the agent and its behaviors
 	virtual void update(float deltaTime);
 
-	// Draw the agent
-	//virtual void Draw();
+	//void SetAttack(bool state) { m_attack = state; }
+	Actor* getTarget() { return m_target; }
+	void setTarget(Actor* actor) { m_target = actor; }
 
-	void SetAttack(bool state) { m_attack = state; }
-
+	// bt stands for behavior tree
 	void btEnableBehavior(int behavior);
 	void btDisableBehavior(int behavior);
 	void btEnableAll();
@@ -39,4 +43,12 @@ public:
 	Vector2 m_acceleration;
 	Vector2 m_velocity;
 	Vector2 m_position;
+
+private:
+	Actor* m_target;
+	int m_state;
+	SeekComponent* m_seek;
+	FleeComponent* m_flee;
+	EvadeComponent* m_evade;
+	ArriveComponent* m_arrive;
 };

@@ -8,9 +8,11 @@
 #include "WanderComponent.h"
 #include "SpriteComponent.h"
 #include "MouseComponent.h"
+#include "MovementComponent.h"
 #include "Transform2D.h"
 #include "Agent.h"
 #include "raylib.h"
+
 
 void SteeringBehaviorScene::start()
 {

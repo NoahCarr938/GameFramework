@@ -170,6 +170,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="AStarScene.cpp" />
     <ClCompile Include="MouseComponent.cpp" />
+    <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="Pathfinding\AStarNodeMap.cpp" />
     <ClCompile Include="Pathfinding\AStarPathAgent.cpp" />
     <ClCompile Include="Pathfinding\AStarPathfinding.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MouseComponent.h" />
+    <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="AStarScene.h" />
     <ClInclude Include="Pathfinding\AStarNodeMap.h" />
