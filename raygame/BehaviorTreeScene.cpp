@@ -22,7 +22,7 @@ void BehaviorTreeScene::start()
 	player->addComponent(new MouseComponent(player));
 	player->getTransform()->setScale({ 50, 50 });
 
-	BehaviorTreeAgent* enemy = new BehaviorTreeAgent();
+	BehaviorTreeAgent* enemy = new BehaviorTreeAgent(200, 100, "Agent");
 	enemy->addComponent(new SpriteComponent(enemy, "Images/enemy.png"));
 	enemy->getTransform()->setScale({ 50 , 50 });
 
